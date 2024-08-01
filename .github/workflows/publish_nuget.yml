@@ -1,0 +1,36 @@
+name: Publish C# Package to NuGet
+
+on:
+  release:
+    types: [published]
+
+env:
+  MANIFEST_PATH: .manifest.json
+  NUGET_API_SOURCE: https://api.nuget.org/v3/index.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Read .csproj file path
+        id: read_csproj_path
+        run: echo "csproj_path=$(jq -r '.files[] | select(endswith(".csproj") and (. | endswith("Example.csproj") | not))' $MANIFEST_PATH)" >> "$GITHUB_OUTPUT"
+
+      - name: Read SDK version
+        id: read_sdk_version
+        run: echo "sdk_version=$(jq -r '.config.sdkVersion' $MANIFEST_PATH)" >> "$GITHUB_OUTPUT"
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0"
+
+      - name: Pack NuGet package
+        run: dotnet pack ${{ steps.read_csproj_path.outputs.csproj_path }} -o ./dist --configuration Release /p:PackageVersion=${{ steps.read_sdk_version.outputs.sdk_version }}
+
+      - name: Publish NuGet package
+        run: dotnet nuget push ./dist/*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source $NUGET_API_SOURCE
