@@ -1,6 +1,6 @@
 {
-  "liblabVersion": "2.1.24",
-  "date": "2024-08-02T14:47:05.334Z",
+  "liblabVersion": "2.1.27",
+  "date": "2024-08-15T15:52:03.220Z",
   "config": {
     "apiId": 947,
     "sdkName": "signplus",
@@ -22,6 +22,7 @@
       },
       "go": {
         "goModuleName": "github.com/alohihq/signplus-go",
+        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-go",
         "ignoreFiles": [],
         "liblabVersion": "2",
@@ -29,12 +30,14 @@
       },
       "java": {
         "groupId": "alohi.signplus",
+        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-java",
         "liblabVersion": "2",
         "sdkVersion": "2.0.0"
       },
       "python": {
         "alwaysInitializeOptionals": false,
+        "additionalConstructorParameters": [],
         "pypiPackageName": "signplus-python",
         "githubRepoName": "signplus-python",
         "ignoreFiles": [],
@@ -43,6 +46,7 @@
       },
       "php": {
         "packageName": "alohi/signplus",
+        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
@@ -54,6 +58,7 @@
         "httpClient": "axios",
         "npmName": "signplus-typescript",
         "npmOrg": "alohi",
+        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
@@ -91,7 +96,7 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240802%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240802T144659Z&X-Amz-Expires=43200&X-Amz-Signature=d40852fad5b0585cd81c33b96446050f5962001285feb78369f2edb87450abf7&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240815%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240815T155157Z&X-Amz-Expires=43200&X-Amz-Signature=be281875dd7bde2470ed3ea0539539252cc265515a1168f4a7f7ea20a8dcc5b1&X-Amz-SignedHeaders=host&x-id=GetObject",
     "includeWatermark": false,
     "packageId": "Alohi.Signplus",
     "githubRepoName": "signplus-sharp",
