@@ -24,7 +24,7 @@ public record Envelope(
         JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
     ]
         long? Pages = null,
-    /// <value>Flow type of the envelope (REQUEST_SIGNATURE is a request for signature, SIGN_MYSELF is a self-signing flow)</value>
+    /// <value>Flow type of the envelope (REQUEST_SIGNATURE is a request for signature)</value>
     [property:
         JsonPropertyName("flow_type"),
         JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
