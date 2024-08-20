@@ -6,9 +6,6 @@ public record CreateEnvelopeRequest(
     /// <value>Name of the envelope</value>
     [property: JsonPropertyName("name")]
         string Name,
-    /// <value>Flow type of the envelope (REQUEST_SIGNATURE is a request for signature, SIGN_MYSELF is a self-signing flow)</value>
-    [property: JsonPropertyName("flow_type")]
-        EnvelopeFlowType FlowType,
     /// <value>Legal level of the envelope (SES is Simple Electronic Signature, QES_EIDAS is Qualified Electronic Signature, QES_ZERTES is Qualified Electronic Signature with Zertes)</value>
     [property: JsonPropertyName("legality_level")]
         EnvelopeLegalityLevel LegalityLevel,
