@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Signplus</RootNamespace>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <PackageId>Alohi.Signplus</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
