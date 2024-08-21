@@ -29,6 +29,9 @@ jobs:
         with:
           dotnet-version: "6.0"
 
+      - name: Copy README.md
+        run: cp README.md Signplus
+
       - name: Pack NuGet package
         run: dotnet pack ${{ steps.read_csproj_path.outputs.csproj_path }} -o ./dist --configuration Release /p:PackageVersion=${{ steps.read_sdk_version.outputs.sdk_version }}
 
