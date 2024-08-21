@@ -71,7 +71,7 @@ using Signplus.Models;
 
 var client = new SignplusClient();
 
-var input = new CreateEnvelopeRequest("name", EnvelopeFlowType.RequestSignature, EnvelopeLegalityLevel.Ses);
+var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses);
 
 var response = await client.Signplus.CreateEnvelopeAsync(input);
 
