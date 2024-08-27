@@ -567,7 +567,7 @@ using Signplus.Models;
 
 var client = new SignplusClient();
 
-var input = new SetEnvelopeExpirationRequest(6);
+var input = new SetEnvelopeExpirationRequest(3);
 
 var response = await client.Signplus.SetEnvelopeExpirationDateAsync(input, "envelope_id");
 
@@ -692,7 +692,7 @@ using Signplus.Models;
 
 var client = new SignplusClient();
 
-var input = new AddAnnotationRequest("document_id", 5, 2.83, 1.27, 5.18, 4.34, AnnotationType.Text);
+var input = new AddAnnotationRequest("document_id", 7, 7.25, 7.35, 6.25, 9.77, AnnotationType.Text);
 
 var response = await client.Signplus.AddEnvelopeAnnotationAsync(input, "envelope_id");
 
@@ -1179,7 +1179,7 @@ using Signplus.Models;
 
 var client = new SignplusClient();
 
-var input = new AddAnnotationRequest("document_id", 5, 2.83, 1.27, 5.18, 4.34, AnnotationType.Text);
+var input = new AddAnnotationRequest("document_id", 7, 7.25, 7.35, 6.25, 9.77, AnnotationType.Text);
 
 var response = await client.Signplus.AddTemplateAnnotationAsync(input, "template_id");
 
