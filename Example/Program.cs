@@ -1,11 +1,11 @@
-using Signplus;
-using Signplus.Config;
-using Environment = Signplus.Http.Environment;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
 var config = new SignplusConfig
 {
     Environment = Environment.Default,
-    AccessToken = "YOUR_ACCESS_TOKEN"
+    AccessToken = "YOUR_ACCESS_TOKEN",
 };
 
 var client = new SignplusClient(config);
