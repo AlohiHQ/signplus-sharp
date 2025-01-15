@@ -4,4 +4,4 @@
 
 | Name | Type   | Required | Description                     |
 | :--- | :----- | :------- | :------------------------------ |
-| File | object | ❌       | File to upload in binary format |
+| File | byte[] | ❌       | File to upload in binary format |

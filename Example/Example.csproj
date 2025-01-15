@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="../Signplus/Signplus.csproj" />
+    <ProjectReference Include="../Alohi.Signplus/Alohi.Signplus.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

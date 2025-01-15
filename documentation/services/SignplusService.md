@@ -66,12 +66,18 @@ Create new envelope
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses);
+var client = new SignplusClient(config);
+
+var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, 1, "comment", false);
 
 var response = await client.Signplus.CreateEnvelopeAsync(input);
 
@@ -99,12 +105,18 @@ Create new envelope from template
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new CreateEnvelopeFromTemplateRequest("name");
+var client = new SignplusClient(config);
+
+var input = new CreateEnvelopeFromTemplateRequest("name", "comment", false);
 
 var response = await client.Signplus.CreateEnvelopeFromTemplateAsync(input, "template_id");
 
@@ -131,12 +143,22 @@ List envelopes
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new ListEnvelopesRequest();
+var client = new SignplusClient(config);
+
+var tags = new List<string>() { "tags" };
+var ids = new List<string>() { "ids" };
+var statuses = new List<EnvelopeStatus>() { EnvelopeStatus.Draft };
+var folderIds = new List<string>() { "folder_ids" };
+var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, false, 7, 10, "uid", 4, 0, "after", "before", EnvelopeOrderField.CreationDate, true, true);
 
 var response = await client.Signplus.ListEnvelopesAsync(input);
 
@@ -163,9 +185,15 @@ Get envelope
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetEnvelopeAsync("envelope_id");
 
@@ -188,9 +216,15 @@ Delete envelope
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 await client.Signplus.DeleteEnvelopeAsync("envelope_id");
 ```
@@ -216,9 +250,15 @@ Get envelope document
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetEnvelopeDocumentAsync("envelope_id", "document_id");
 
@@ -245,9 +285,15 @@ Get envelope documents
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetEnvelopeDocumentsAsync("envelope_id");
 
@@ -275,12 +321,18 @@ Add envelope document
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new AddEnvelopeDocumentRequest();
+var client = new SignplusClient(config);
+
+var input = new AddEnvelopeDocumentRequest(new byte[] {});
 
 var response = await client.Signplus.AddEnvelopeDocumentAsync(input, "envelope_id");
 
@@ -308,12 +360,18 @@ Set envelope dynamic fields
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var dynamicFieldsItem = new DynamicField();
+var client = new SignplusClient(config);
+
+var dynamicFieldsItem = new DynamicField("name", "value");
 var dynamicFields = new List<DynamicField>() { dynamicFieldsItem };
 var input = new SetEnvelopeDynamicFieldsRequest(dynamicFields);
 
@@ -343,12 +401,23 @@ Add envelope signing steps
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new AddEnvelopeSigningStepsRequest();
+var client = new SignplusClient(config);
+
+var verification = new RecipientVerification(RecipientVerificationType.Sms, "value");
+var recipientsItem = new Recipient("name", "email", RecipientRole.Signer, "id", "uid", verification);
+var recipients = new List<Recipient>() { recipientsItem };
+var signingStepsItem = new SigningStep(recipients);
+var signingSteps = new List<SigningStep>() { signingStepsItem };
+var input = new AddEnvelopeSigningStepsRequest(signingSteps);
 
 var response = await client.Signplus.AddEnvelopeSigningStepsAsync(input, "envelope_id");
 
@@ -375,9 +444,15 @@ Send envelope for signature
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.SendEnvelopeAsync("envelope_id");
 
@@ -404,9 +479,15 @@ Duplicate envelope
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.DuplicateEnvelopeAsync("envelope_id");
 
@@ -433,9 +514,15 @@ Void envelope
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.VoidEnvelopeAsync("envelope_id");
 
@@ -463,12 +550,18 @@ Rename envelope
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new RenameEnvelopeRequest();
+var client = new SignplusClient(config);
+
+var input = new RenameEnvelopeRequest("name");
 
 var response = await client.Signplus.RenameEnvelopeAsync(input, "envelope_id");
 
@@ -496,10 +589,16 @@ Set envelope comment
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var input = new SetEnvelopeCommentRequest("comment");
 
@@ -529,12 +628,18 @@ Set envelope notification
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new EnvelopeNotification();
+var client = new SignplusClient(config);
+
+var input = new EnvelopeNotification("subject", "message", 2);
 
 var response = await client.Signplus.SetEnvelopeNotificationAsync(input, "envelope_id");
 
@@ -562,12 +667,18 @@ Set envelope expiration date
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new SetEnvelopeExpirationRequest(6);
+var client = new SignplusClient(config);
+
+var input = new SetEnvelopeExpirationRequest(1);
 
 var response = await client.Signplus.SetEnvelopeExpirationDateAsync(input, "envelope_id");
 
@@ -595,12 +706,18 @@ Set envelope legality level
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new SetEnvelopeLegalityLevelRequest();
+var client = new SignplusClient(config);
+
+var input = new SetEnvelopeLegalityLevelRequest(EnvelopeLegalityLevel.Ses);
 
 var response = await client.Signplus.SetEnvelopeLegalityLevelAsync(input, "envelope_id");
 
@@ -627,9 +744,15 @@ Get envelope annotations
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetEnvelopeAnnotationsAsync("envelope_id");
 
@@ -657,9 +780,15 @@ Get envelope document annotations
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetEnvelopeDocumentAnnotationsAsync("envelope_id", "document_id");
 
@@ -687,12 +816,25 @@ Add envelope annotation
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new AddAnnotationRequest("document_id", 5, 2.83, 1.27, 5.18, 4.34, AnnotationType.Text);
+var client = new SignplusClient(config);
+
+var signature = new AnnotationSignature("id");
+var initials = new AnnotationInitials("id");
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
+var text = new AnnotationText(8.49, 3.27, "value", "tooltip", "dynamic_field_name", font);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
+var datetime = new AnnotationDateTime(3.21, font, "color", true, "timezone", 4, AnnotationDateTimeFormat.DmyNumericSlash);
+var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
+var input = new AddAnnotationRequest("document_id", 5, 6.53, 8.14, 7.47, 1.42, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddEnvelopeAnnotationAsync(input, "envelope_id");
 
@@ -716,9 +858,15 @@ Delete envelope annotation
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 await client.Signplus.DeleteEnvelopeAnnotationAsync("envelope_id", "annotation_id");
 ```
@@ -743,10 +891,16 @@ Create new template
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var input = new CreateTemplateRequest("name");
 
@@ -775,12 +929,20 @@ List templates
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new ListTemplatesRequest();
+var client = new SignplusClient(config);
+
+var tags = new List<string>() { "tags" };
+var ids = new List<string>() { "ids" };
+var input = new ListTemplatesRequest("name", tags, ids, 6, 4, "after", "before", TemplateOrderField.TemplateId, true);
 
 var response = await client.Signplus.ListTemplatesAsync(input);
 
@@ -807,9 +969,15 @@ Get template
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetTemplateAsync("template_id");
 
@@ -832,9 +1000,15 @@ Delete template
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 await client.Signplus.DeleteTemplateAsync("template_id");
 ```
@@ -859,9 +1033,15 @@ Duplicate template
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.DuplicateTemplateAsync("template_id");
 
@@ -889,12 +1069,18 @@ Add template document
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new AddTemplateDocumentRequest(file);
+var client = new SignplusClient(config);
+
+var input = new AddTemplateDocumentRequest(new byte[] {});
 
 var response = await client.Signplus.AddTemplateDocumentAsync(input, "template_id");
 
@@ -922,9 +1108,15 @@ Get template document
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetTemplateDocumentAsync("template_id", "document_id");
 
@@ -951,9 +1143,15 @@ Get template documents
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetTemplateDocumentsAsync("template_id");
 
@@ -981,12 +1179,20 @@ Add template signing steps
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var signingStepsItem = new TemplateSigningStep();
+var client = new SignplusClient(config);
+
+var recipientsItem = new TemplateRecipient("id", "uid", "name", "email", TemplateRecipientRole.Signer);
+var recipients = new List<TemplateRecipient>() { recipientsItem };
+var signingStepsItem = new TemplateSigningStep(recipients);
 var signingSteps = new List<TemplateSigningStep>() { signingStepsItem };
 var input = new AddTemplateSigningStepsRequest(signingSteps);
 
@@ -1016,10 +1222,16 @@ Rename template
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var input = new RenameTemplateRequest("name");
 
@@ -1049,10 +1261,16 @@ Set template comment
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var input = new SetTemplateCommentRequest("comment");
 
@@ -1082,12 +1300,18 @@ Set template notification
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new EnvelopeNotification();
+var client = new SignplusClient(config);
+
+var input = new EnvelopeNotification("subject", "message", 2);
 
 var response = await client.Signplus.SetTemplateNotificationAsync(input, "template_id");
 
@@ -1114,9 +1338,15 @@ Get template annotations
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetTemplateAnnotationsAsync("template_id");
 
@@ -1144,9 +1374,15 @@ Get document template annotations
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var response = await client.Signplus.GetDocumentTemplateAnnotationsAsync("template_id", "document_id");
 
@@ -1174,12 +1410,25 @@ Add template annotation
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new AddAnnotationRequest("document_id", 5, 2.83, 1.27, 5.18, 4.34, AnnotationType.Text);
+var client = new SignplusClient(config);
+
+var signature = new AnnotationSignature("id");
+var initials = new AnnotationInitials("id");
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
+var text = new AnnotationText(8.49, 3.27, "value", "tooltip", "dynamic_field_name", font);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
+var datetime = new AnnotationDateTime(3.21, font, "color", true, "timezone", 4, AnnotationDateTimeFormat.DmyNumericSlash);
+var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
+var input = new AddAnnotationRequest("document_id", 5, 6.53, 8.14, 7.47, 1.42, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddTemplateAnnotationAsync(input, "template_id");
 
@@ -1203,9 +1452,15 @@ Delete template annotation
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 await client.Signplus.DeleteTemplateAnnotationAsync("template_id", "annotation_id");
 ```
@@ -1230,10 +1485,16 @@ Create webhook
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 var input = new CreateWebhookRequest(WebhookEvent.EnvelopeExpired, "target");
 
@@ -1262,12 +1523,18 @@ List webhooks
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
-using Signplus.Models;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
 
-var input = new ListWebhooksRequest();
+var client = new SignplusClient(config);
+
+var input = new ListWebhooksRequest("webhook_id", WebhookEvent.EnvelopeExpired);
 
 var response = await client.Signplus.ListWebhooksAsync(input);
 
@@ -1290,9 +1557,15 @@ Delete webhook
 **Example Usage Code Snippet**
 
 ```csharp
-using Signplus;
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
 
-var client = new SignplusClient();
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
 
 await client.Signplus.DeleteWebhookAsync("webhook_id");
 ```
