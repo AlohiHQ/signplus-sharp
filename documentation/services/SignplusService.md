@@ -77,7 +77,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, 1, "comment", false);
+var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, 8, "comment", false);
 
 var response = await client.Signplus.CreateEnvelopeAsync(input);
 
@@ -158,7 +158,7 @@ var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
 var statuses = new List<EnvelopeStatus>() { EnvelopeStatus.Draft };
 var folderIds = new List<string>() { "folder_ids" };
-var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, false, 7, 10, "uid", 4, 0, "after", "before", EnvelopeOrderField.CreationDate, true, true);
+var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, true, 4, 7, "uid", 8, 9, "after", "before", EnvelopeOrderField.CreationDate, false, true);
 
 var response = await client.Signplus.ListEnvelopesAsync(input);
 
@@ -639,7 +639,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new EnvelopeNotification("subject", "message", 2);
+var input = new EnvelopeNotification("subject", "message", 1);
 
 var response = await client.Signplus.SetEnvelopeNotificationAsync(input, "envelope_id");
 
@@ -678,7 +678,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new SetEnvelopeExpirationRequest(1);
+var input = new SetEnvelopeExpirationRequest(6);
 
 var response = await client.Signplus.SetEnvelopeExpirationDateAsync(input, "envelope_id");
 
@@ -829,12 +829,12 @@ var client = new SignplusClient(config);
 
 var signature = new AnnotationSignature("id");
 var initials = new AnnotationInitials("id");
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
-var text = new AnnotationText(8.49, 3.27, "value", "tooltip", "dynamic_field_name", font);
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
-var datetime = new AnnotationDateTime(3.21, font, "color", true, "timezone", 4, AnnotationDateTimeFormat.DmyNumericSlash);
-var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 5, 6.53, 8.14, 7.47, 1.42, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var text = new AnnotationText(0.75, 0.4, "value", "tooltip", "dynamic_field_name", font);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var datetime = new AnnotationDateTime(2.34, font, "color", false, "timezone", 6, AnnotationDateTimeFormat.DmyNumericSlash);
+var checkbox = new AnnotationCheckbox(true, AnnotationCheckboxStyle.CircleCheck);
+var input = new AddAnnotationRequest("document_id", 5, 2.83, 1.27, 5.18, 4.34, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddEnvelopeAnnotationAsync(input, "envelope_id");
 
@@ -942,7 +942,7 @@ var client = new SignplusClient(config);
 
 var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
-var input = new ListTemplatesRequest("name", tags, ids, 6, 4, "after", "before", TemplateOrderField.TemplateId, true);
+var input = new ListTemplatesRequest("name", tags, ids, 2, 0, "after", "before", TemplateOrderField.TemplateId, true);
 
 var response = await client.Signplus.ListTemplatesAsync(input);
 
@@ -1311,7 +1311,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new EnvelopeNotification("subject", "message", 2);
+var input = new EnvelopeNotification("subject", "message", 1);
 
 var response = await client.Signplus.SetTemplateNotificationAsync(input, "template_id");
 
@@ -1423,12 +1423,12 @@ var client = new SignplusClient(config);
 
 var signature = new AnnotationSignature("id");
 var initials = new AnnotationInitials("id");
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
-var text = new AnnotationText(8.49, 3.27, "value", "tooltip", "dynamic_field_name", font);
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, false);
-var datetime = new AnnotationDateTime(3.21, font, "color", true, "timezone", 4, AnnotationDateTimeFormat.DmyNumericSlash);
-var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 5, 6.53, 8.14, 7.47, 1.42, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var text = new AnnotationText(0.75, 0.4, "value", "tooltip", "dynamic_field_name", font);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var datetime = new AnnotationDateTime(2.34, font, "color", false, "timezone", 6, AnnotationDateTimeFormat.DmyNumericSlash);
+var checkbox = new AnnotationCheckbox(true, AnnotationCheckboxStyle.CircleCheck);
+var input = new AddAnnotationRequest("document_id", 5, 2.83, 1.27, 5.18, 4.34, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddTemplateAnnotationAsync(input, "template_id");
 

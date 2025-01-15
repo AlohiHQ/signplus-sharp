@@ -1,6 +1,6 @@
 {
   "liblabVersion": "2.10.9",
-  "date": "2025-01-15T12:59:44.632Z",
+  "date": "2025-01-15T13:54:14.544Z",
   "config": {
     "apiId": 1666,
     "sdkName": "signplus",
@@ -42,7 +42,7 @@
         "additionalConstructorParameters": [],
         "githubRepoName": "signplus-java",
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "2.1.0"
       },
       "python": {
         "alwaysInitializeOptionals": false,
@@ -59,7 +59,7 @@
         "githubRepoName": "signplus-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "2.1.0"
       },
       "typescript": {
         "bundle": false,
@@ -71,7 +71,7 @@
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0",
+        "sdkVersion": "2.1.0",
         "generateEnumAs": "enum"
       }
     },
