@@ -1,15 +1,109 @@
 {
-  "liblabVersion": "2.10.9",
-  "date": "2025-01-15T12:59:44.632Z",
+  "liblabVersion": "2.12.0",
+  "date": "2025-01-29T10:28:51.517Z",
   "config": {
-    "apiId": 1666,
+    "apiId": 1713,
     "sdkName": "signplus",
-    "sdkVersion": "1.1.0",
+    "sdkVersion": "1.2.0",
     "languages": ["csharp"],
     "auth": ["bearer"],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
-    "apiVersion": "2.1.0",
+    "rawConfig": {
+      "sdkName": "signplus",
+      "apiVersion": "2.2.0",
+      "apiName": "signplus-api",
+      "specFilePath": "openapi.yaml",
+      "languages": ["csharp", "go", "python", "typescript", "java", "php"],
+      "auth": ["bearer"],
+      "customizations": {
+        "includeOptionalSnippetParameters": true,
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "inferServiceNames": false,
+        "injectedModels": [],
+        "license": {
+          "type": "MIT"
+        },
+        "responseHeaders": false,
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        }
+      },
+      "languageOptions": {
+        "python": {
+          "alwaysInitializeOptionals": false,
+          "pypiPackageName": "signplus-python",
+          "githubRepoName": "signplus-python",
+          "ignoreFiles": [],
+          "sdkVersion": "1.2.0",
+          "liblabVersion": "2",
+          "additionalConstructorParameters": []
+        },
+        "java": {
+          "githubRepoName": "signplus-java",
+          "groupId": "com.alohi",
+          "artifactId": "signplus",
+          "sdkVersion": "2.2.0",
+          "liblabVersion": "2",
+          "developers": [
+            {
+              "name": "Alohi SA",
+              "email": "support@alohi.com",
+              "organization": "Alohi SA",
+              "organizationUrl": "https://www.alohi.com"
+            }
+          ],
+          "additionalConstructorParameters": []
+        },
+        "typescript": {
+          "bundle": false,
+          "exportClassDefault": false,
+          "httpClient": "axios",
+          "npmName": "signplus-typescript",
+          "npmOrg": "alohi",
+          "githubRepoName": "signplus-typescript",
+          "ignoreFiles": [],
+          "sdkVersion": "2.2.0",
+          "liblabVersion": "2",
+          "additionalConstructorParameters": []
+        },
+        "go": {
+          "goModuleName": "github.com/alohihq/signplus-go",
+          "githubRepoName": "signplus-go",
+          "ignoreFiles": [],
+          "sdkVersion": "1.2.0",
+          "liblabVersion": "2",
+          "additionalConstructorParameters": []
+        },
+        "php": {
+          "packageName": "alohi/signplus",
+          "githubRepoName": "signplus-php",
+          "ignoreFiles": [],
+          "sdkVersion": "2.2.0",
+          "liblabVersion": "2",
+          "additionalConstructorParameters": []
+        },
+        "csharp": {
+          "packageId": "Alohi.Signplus",
+          "githubRepoName": "signplus-sharp",
+          "ignoreFiles": [],
+          "sdkVersion": "1.2.0",
+          "liblabVersion": "2"
+        }
+      },
+      "publishing": {
+        "githubOrg": "alohihq"
+      }
+    },
+    "apiVersion": "2.2.0",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
     "languageOptions": {
@@ -18,7 +112,7 @@
         "githubRepoName": "signplus-sharp",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "1.2.0"
       },
       "go": {
         "goModuleName": "github.com/alohihq/signplus-go",
@@ -26,7 +120,7 @@
         "githubRepoName": "signplus-go",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "1.2.0"
       },
       "java": {
         "groupId": "com.alohi",
@@ -42,7 +136,7 @@
         "additionalConstructorParameters": [],
         "githubRepoName": "signplus-java",
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "2.2.0"
       },
       "python": {
         "alwaysInitializeOptionals": false,
@@ -51,7 +145,7 @@
         "githubRepoName": "signplus-python",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "1.2.0"
       },
       "php": {
         "packageName": "alohi/signplus",
@@ -59,7 +153,7 @@
         "githubRepoName": "signplus-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0"
+        "sdkVersion": "2.2.0"
       },
       "typescript": {
         "bundle": false,
@@ -71,7 +165,7 @@
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.1.0",
+        "sdkVersion": "2.2.0",
         "generateEnumAs": "enum"
       }
     },
@@ -122,7 +216,7 @@
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.7"
+        "axios": "^1.7.9"
       },
       "languages": ["typescript"]
     },
