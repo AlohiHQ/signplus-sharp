@@ -16,4 +16,5 @@ public record WebhookEvent : ValueEnum<string>
     public static WebhookEvent EnvelopeDeclined = new("ENVELOPE_DECLINED");
     public static WebhookEvent EnvelopeVoided = new("ENVELOPE_VOIDED");
     public static WebhookEvent EnvelopeCompleted = new("ENVELOPE_COMPLETED");
+    public static WebhookEvent EnvelopeAuditTrail = new("ENVELOPE_AUDIT_TRAIL");
 }

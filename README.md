@@ -1,4 +1,4 @@
-# Signplus C# SDK 1.1.0
+# Signplus C# SDK 1.2.0
 
 Welcome to the Signplus SDK documentation. This guide will help you get started with integrating and using the Signplus SDK in your project.
 
@@ -6,8 +6,8 @@ Welcome to the Signplus SDK documentation. This guide will help you get started 
 
 ## Versions
 
-- API version: `2.1.0`
-- SDK version: `1.1.0`
+- API version: `2.2.0`
+- SDK version: `1.2.0`
 
 ## About the API
 
