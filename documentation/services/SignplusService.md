@@ -2,49 +2,51 @@
 
 A list of all methods in the `SignplusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                     | Description                       |
-| :-------------------------------------------------------------------------- | :-------------------------------- |
-| [CreateEnvelopeAsync](#createenvelopeasync)                                 | Create new envelope               |
-| [CreateEnvelopeFromTemplateAsync](#createenvelopefromtemplateasync)         | Create new envelope from template |
-| [ListEnvelopesAsync](#listenvelopesasync)                                   | List envelopes                    |
-| [GetEnvelopeAsync](#getenvelopeasync)                                       | Get envelope                      |
-| [DeleteEnvelopeAsync](#deleteenvelopeasync)                                 | Delete envelope                   |
-| [GetEnvelopeDocumentAsync](#getenvelopedocumentasync)                       | Get envelope document             |
-| [GetEnvelopeDocumentsAsync](#getenvelopedocumentsasync)                     | Get envelope documents            |
-| [AddEnvelopeDocumentAsync](#addenvelopedocumentasync)                       | Add envelope document             |
-| [SetEnvelopeDynamicFieldsAsync](#setenvelopedynamicfieldsasync)             | Set envelope dynamic fields       |
-| [AddEnvelopeSigningStepsAsync](#addenvelopesigningstepsasync)               | Add envelope signing steps        |
-| [SendEnvelopeAsync](#sendenvelopeasync)                                     | Send envelope for signature       |
-| [DuplicateEnvelopeAsync](#duplicateenvelopeasync)                           | Duplicate envelope                |
-| [VoidEnvelopeAsync](#voidenvelopeasync)                                     | Void envelope                     |
-| [RenameEnvelopeAsync](#renameenvelopeasync)                                 | Rename envelope                   |
-| [SetEnvelopeCommentAsync](#setenvelopecommentasync)                         | Set envelope comment              |
-| [SetEnvelopeNotificationAsync](#setenvelopenotificationasync)               | Set envelope notification         |
-| [SetEnvelopeExpirationDateAsync](#setenvelopeexpirationdateasync)           | Set envelope expiration date      |
-| [SetEnvelopeLegalityLevelAsync](#setenvelopelegalitylevelasync)             | Set envelope legality level       |
-| [GetEnvelopeAnnotationsAsync](#getenvelopeannotationsasync)                 | Get envelope annotations          |
-| [GetEnvelopeDocumentAnnotationsAsync](#getenvelopedocumentannotationsasync) | Get envelope document annotations |
-| [AddEnvelopeAnnotationAsync](#addenvelopeannotationasync)                   | Add envelope annotation           |
-| [DeleteEnvelopeAnnotationAsync](#deleteenvelopeannotationasync)             | Delete envelope annotation        |
-| [CreateTemplateAsync](#createtemplateasync)                                 | Create new template               |
-| [ListTemplatesAsync](#listtemplatesasync)                                   | List templates                    |
-| [GetTemplateAsync](#gettemplateasync)                                       | Get template                      |
-| [DeleteTemplateAsync](#deletetemplateasync)                                 | Delete template                   |
-| [DuplicateTemplateAsync](#duplicatetemplateasync)                           | Duplicate template                |
-| [AddTemplateDocumentAsync](#addtemplatedocumentasync)                       | Add template document             |
-| [GetTemplateDocumentAsync](#gettemplatedocumentasync)                       | Get template document             |
-| [GetTemplateDocumentsAsync](#gettemplatedocumentsasync)                     | Get template documents            |
-| [AddTemplateSigningStepsAsync](#addtemplatesigningstepsasync)               | Add template signing steps        |
-| [RenameTemplateAsync](#renametemplateasync)                                 | Rename template                   |
-| [SetTemplateCommentAsync](#settemplatecommentasync)                         | Set template comment              |
-| [SetTemplateNotificationAsync](#settemplatenotificationasync)               | Set template notification         |
-| [GetTemplateAnnotationsAsync](#gettemplateannotationsasync)                 | Get template annotations          |
-| [GetDocumentTemplateAnnotationsAsync](#getdocumenttemplateannotationsasync) | Get document template annotations |
-| [AddTemplateAnnotationAsync](#addtemplateannotationasync)                   | Add template annotation           |
-| [DeleteTemplateAnnotationAsync](#deletetemplateannotationasync)             | Delete template annotation        |
-| [CreateWebhookAsync](#createwebhookasync)                                   | Create webhook                    |
-| [ListWebhooksAsync](#listwebhooksasync)                                     | List webhooks                     |
-| [DeleteWebhookAsync](#deletewebhookasync)                                   | Delete webhook                    |
+| Methods                                                                       | Description                                        |
+| :---------------------------------------------------------------------------- | :------------------------------------------------- |
+| [CreateEnvelopeAsync](#createenvelopeasync)                                   | Create new envelope                                |
+| [CreateEnvelopeFromTemplateAsync](#createenvelopefromtemplateasync)           | Create new envelope from template                  |
+| [ListEnvelopesAsync](#listenvelopesasync)                                     | List envelopes                                     |
+| [GetEnvelopeAsync](#getenvelopeasync)                                         | Get envelope                                       |
+| [DeleteEnvelopeAsync](#deleteenvelopeasync)                                   | Delete envelope                                    |
+| [DownloadEnvelopeSignedDocumentsAsync](#downloadenvelopesigneddocumentsasync) | Download signed documents for an envelope          |
+| [DownloadEnvelopeCertificateAsync](#downloadenvelopecertificateasync)         | Download certificate of completion for an envelope |
+| [GetEnvelopeDocumentAsync](#getenvelopedocumentasync)                         | Get envelope document                              |
+| [GetEnvelopeDocumentsAsync](#getenvelopedocumentsasync)                       | Get envelope documents                             |
+| [AddEnvelopeDocumentAsync](#addenvelopedocumentasync)                         | Add envelope document                              |
+| [SetEnvelopeDynamicFieldsAsync](#setenvelopedynamicfieldsasync)               | Set envelope dynamic fields                        |
+| [AddEnvelopeSigningStepsAsync](#addenvelopesigningstepsasync)                 | Add envelope signing steps                         |
+| [SendEnvelopeAsync](#sendenvelopeasync)                                       | Send envelope for signature                        |
+| [DuplicateEnvelopeAsync](#duplicateenvelopeasync)                             | Duplicate envelope                                 |
+| [VoidEnvelopeAsync](#voidenvelopeasync)                                       | Void envelope                                      |
+| [RenameEnvelopeAsync](#renameenvelopeasync)                                   | Rename envelope                                    |
+| [SetEnvelopeCommentAsync](#setenvelopecommentasync)                           | Set envelope comment                               |
+| [SetEnvelopeNotificationAsync](#setenvelopenotificationasync)                 | Set envelope notification                          |
+| [SetEnvelopeExpirationDateAsync](#setenvelopeexpirationdateasync)             | Set envelope expiration date                       |
+| [SetEnvelopeLegalityLevelAsync](#setenvelopelegalitylevelasync)               | Set envelope legality level                        |
+| [GetEnvelopeAnnotationsAsync](#getenvelopeannotationsasync)                   | Get envelope annotations                           |
+| [GetEnvelopeDocumentAnnotationsAsync](#getenvelopedocumentannotationsasync)   | Get envelope document annotations                  |
+| [AddEnvelopeAnnotationAsync](#addenvelopeannotationasync)                     | Add envelope annotation                            |
+| [DeleteEnvelopeAnnotationAsync](#deleteenvelopeannotationasync)               | Delete envelope annotation                         |
+| [CreateTemplateAsync](#createtemplateasync)                                   | Create new template                                |
+| [ListTemplatesAsync](#listtemplatesasync)                                     | List templates                                     |
+| [GetTemplateAsync](#gettemplateasync)                                         | Get template                                       |
+| [DeleteTemplateAsync](#deletetemplateasync)                                   | Delete template                                    |
+| [DuplicateTemplateAsync](#duplicatetemplateasync)                             | Duplicate template                                 |
+| [AddTemplateDocumentAsync](#addtemplatedocumentasync)                         | Add template document                              |
+| [GetTemplateDocumentAsync](#gettemplatedocumentasync)                         | Get template document                              |
+| [GetTemplateDocumentsAsync](#gettemplatedocumentsasync)                       | Get template documents                             |
+| [AddTemplateSigningStepsAsync](#addtemplatesigningstepsasync)                 | Add template signing steps                         |
+| [RenameTemplateAsync](#renametemplateasync)                                   | Rename template                                    |
+| [SetTemplateCommentAsync](#settemplatecommentasync)                           | Set template comment                               |
+| [SetTemplateNotificationAsync](#settemplatenotificationasync)                 | Set template notification                          |
+| [GetTemplateAnnotationsAsync](#gettemplateannotationsasync)                   | Get template annotations                           |
+| [GetDocumentTemplateAnnotationsAsync](#getdocumenttemplateannotationsasync)   | Get document template annotations                  |
+| [AddTemplateAnnotationAsync](#addtemplateannotationasync)                     | Add template annotation                            |
+| [DeleteTemplateAnnotationAsync](#deletetemplateannotationasync)               | Delete template annotation                         |
+| [CreateWebhookAsync](#createwebhookasync)                                     | Create webhook                                     |
+| [ListWebhooksAsync](#listwebhooksasync)                                       | List webhooks                                      |
+| [DeleteWebhookAsync](#deletewebhookasync)                                     | Delete webhook                                     |
 
 ## CreateEnvelopeAsync
 
@@ -77,7 +79,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, 2, "comment", true);
+var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, 8, "comment", false);
 
 var response = await client.Signplus.CreateEnvelopeAsync(input);
 
@@ -116,7 +118,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new CreateEnvelopeFromTemplateRequest("name", "comment", true);
+var input = new CreateEnvelopeFromTemplateRequest("name", "comment", false);
 
 var response = await client.Signplus.CreateEnvelopeFromTemplateAsync(input, "template_id");
 
@@ -158,7 +160,7 @@ var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
 var statuses = new List<EnvelopeStatus>() { EnvelopeStatus.Draft };
 var folderIds = new List<string>() { "folder_ids" };
-var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, false, 5, 0, "uid", 10, 8, "after", "before", EnvelopeOrderField.CreationDate, false, true);
+var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, true, 4, 7, "uid", 8, 9, "after", "before", EnvelopeOrderField.CreationDate, false, true);
 
 var response = await client.Signplus.ListEnvelopesAsync(input);
 
@@ -227,6 +229,77 @@ var config = new SignplusConfig{
 var client = new SignplusClient(config);
 
 await client.Signplus.DeleteEnvelopeAsync("envelope_id");
+```
+
+## DownloadEnvelopeSignedDocumentsAsync
+
+Download signed documents for an envelope
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/signed_documents`
+
+**Parameters**
+
+| Name                    | Type   | Required | Description                                                             |
+| :---------------------- | :----- | :------- | :---------------------------------------------------------------------- |
+| envelopeId              | string | ✅       | ID of the envelope                                                      |
+| certificateOfCompletion | bool   | ❌       | Whether to include the certificate of completion in the downloaded file |
+
+**Return Type**
+
+`byte[]`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
+
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
+
+var response = await client.Signplus.DownloadEnvelopeSignedDocumentsAsync("envelope_id", true);
+
+Console.WriteLine(response);
+```
+
+## DownloadEnvelopeCertificateAsync
+
+Download certificate of completion for an envelope
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/certificate`
+
+**Parameters**
+
+| Name       | Type   | Required | Description        |
+| :--------- | :----- | :------- | :----------------- |
+| envelopeId | string | ✅       | ID of the envelope |
+
+**Return Type**
+
+`byte[]`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Environment = Alohi.Signplus.Http.Environment;
+
+var config = new SignplusConfig{
+    Environment = Environment.Default
+};
+
+var client = new SignplusClient(config);
+
+var response = await client.Signplus.DownloadEnvelopeCertificateAsync("envelope_id");
+
+Console.WriteLine(response);
 ```
 
 ## GetEnvelopeDocumentAsync
@@ -639,7 +712,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new EnvelopeNotification("subject", "message", 10);
+var input = new EnvelopeNotification("subject", "message", 1);
 
 var response = await client.Signplus.SetEnvelopeNotificationAsync(input, "envelope_id");
 
@@ -678,7 +751,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new SetEnvelopeExpirationRequest(0);
+var input = new SetEnvelopeExpirationRequest(1);
 
 var response = await client.Signplus.SetEnvelopeExpirationDateAsync(input, "envelope_id");
 
@@ -829,12 +902,12 @@ var client = new SignplusClient(config);
 
 var signature = new AnnotationSignature("id");
 var initials = new AnnotationInitials("id");
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, false, false);
-var text = new AnnotationText(5.51, 3.68, "value", "tooltip", "dynamic_field_name", font);
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, false, false);
-var datetime = new AnnotationDateTime(3.25, font, "color", true, "timezone", 0, AnnotationDateTimeFormat.DmyNumericSlash);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var text = new AnnotationText(8.1, 9.31, "value", "tooltip", "dynamic_field_name", font);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var datetime = new AnnotationDateTime(3.28, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
 var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 8, 1.18, 4.42, 7.23, 7.31, AnnotationType.Text, "recipient_id", true, signature, initials, text, datetime, checkbox);
+var input = new AddAnnotationRequest("document_id", 7, 2.27, 4.71, 0.96, 6.36, AnnotationType.Text, "recipient_id", true, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddEnvelopeAnnotationAsync(input, "envelope_id");
 
@@ -942,7 +1015,7 @@ var client = new SignplusClient(config);
 
 var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
-var input = new ListTemplatesRequest("name", tags, ids, 9, 4, "after", "before", TemplateOrderField.TemplateId, true);
+var input = new ListTemplatesRequest("name", tags, ids, 2, 5, "after", "before", TemplateOrderField.TemplateId, true);
 
 var response = await client.Signplus.ListTemplatesAsync(input);
 
@@ -1311,7 +1384,7 @@ var config = new SignplusConfig{
 
 var client = new SignplusClient(config);
 
-var input = new EnvelopeNotification("subject", "message", 10);
+var input = new EnvelopeNotification("subject", "message", 1);
 
 var response = await client.Signplus.SetTemplateNotificationAsync(input, "template_id");
 
@@ -1423,12 +1496,12 @@ var client = new SignplusClient(config);
 
 var signature = new AnnotationSignature("id");
 var initials = new AnnotationInitials("id");
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, false, false);
-var text = new AnnotationText(5.51, 3.68, "value", "tooltip", "dynamic_field_name", font);
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, false, false);
-var datetime = new AnnotationDateTime(3.25, font, "color", true, "timezone", 0, AnnotationDateTimeFormat.DmyNumericSlash);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var text = new AnnotationText(8.1, 9.31, "value", "tooltip", "dynamic_field_name", font);
+var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
+var datetime = new AnnotationDateTime(3.28, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
 var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 8, 1.18, 4.42, 7.23, 7.31, AnnotationType.Text, "recipient_id", true, signature, initials, text, datetime, checkbox);
+var input = new AddAnnotationRequest("document_id", 7, 2.27, 4.71, 0.96, 6.36, AnnotationType.Text, "recipient_id", true, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddTemplateAnnotationAsync(input, "template_id");
 
