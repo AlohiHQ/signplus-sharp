@@ -15,4 +15,5 @@ public record TemplateRecipientRole : ValueEnum<string>
     public static TemplateRecipientRole Signer = new("SIGNER");
     public static TemplateRecipientRole ReceivesCopy = new("RECEIVES_COPY");
     public static TemplateRecipientRole InPersonSigner = new("IN_PERSON_SIGNER");
+    public static TemplateRecipientRole Sender = new("SENDER");
 }

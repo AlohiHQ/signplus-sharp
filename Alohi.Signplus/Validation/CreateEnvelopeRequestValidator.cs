@@ -9,6 +9,12 @@ public class CreateEnvelopeRequestValidator : AbstractValidator<CreateEnvelopeRe
     public CreateEnvelopeRequestValidator()
     {
         RuleFor(CreateEnvelopeRequest => CreateEnvelopeRequest.Name)
+            .MinimumLength(2)
+            .WithMessage("Minimum length for name is 2.")
+            .MaximumLength(256)
+            .WithMessage("Minimum length for name is 2.")
+            .Matches(@"^[a-zA-Z0-9][a-zA-Z0-9 ]*[a-zA-Z0-9]$")
+            .WithMessage(@"Pattern for name must match ^[a-zA-Z0-9][a-zA-Z0-9 ]*[a-zA-Z0-9]$.")
             .NotNull()
             .WithMessage("Field name is required.");
         RuleFor(CreateEnvelopeRequest => CreateEnvelopeRequest.LegalityLevel)

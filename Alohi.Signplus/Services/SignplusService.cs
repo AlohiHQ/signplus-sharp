@@ -184,6 +184,83 @@ public class SignplusService : BaseService
         response.EnsureSuccessfulResponse();
     }
 
+    /// <summary>Download signed documents for an envelope</summary>
+    /// <param name="envelopeId">ID of the envelope</param>
+    /// <param name="certificateOfCompletion">Whether to include the certificate of completion in the downloaded file</param>
+    public async Task<object> DownloadEnvelopeSignedDocumentsAsync(
+        string envelopeId,
+        bool? certificateOfCompletion = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(envelopeId, nameof(envelopeId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var envelopeIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)envelopeId
+        );
+        if (envelopeIdValidationResult != null)
+        {
+            validationResults.Add(envelopeIdValidationResult);
+        }
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(HttpMethod.Get, "envelope/{envelope_id}/signed_documents")
+            .SetPathParameter("envelope_id", envelopeId)
+            .SetOptionalQueryParameter("certificate_of_completion", certificateOfCompletion)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        return await response
+            .EnsureSuccessfulResponse()
+            .Content.ReadFromJsonAsync<object>(_jsonSerializerOptions, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    /// <summary>Download certificate of completion for an envelope</summary>
+    /// <param name="envelopeId">ID of the envelope</param>
+    public async Task<object> DownloadEnvelopeCertificateAsync(
+        string envelopeId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(envelopeId, nameof(envelopeId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var envelopeIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)envelopeId
+        );
+        if (envelopeIdValidationResult != null)
+        {
+            validationResults.Add(envelopeIdValidationResult);
+        }
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(HttpMethod.Get, "envelope/{envelope_id}/certificate")
+            .SetPathParameter("envelope_id", envelopeId)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        return await response
+            .EnsureSuccessfulResponse()
+            .Content.ReadFromJsonAsync<object>(_jsonSerializerOptions, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
     /// <summary>Get envelope document</summary>
     public async Task<Document> GetEnvelopeDocumentAsync(
         string envelopeId,

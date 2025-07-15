@@ -1,17 +1,18 @@
 {
-  "liblabVersion": "2.12.0",
-  "date": "2025-01-29T10:28:51.517Z",
+  "liblabVersion": "2.25.35",
+  "date": "2025-07-14T14:19:38.252Z",
   "config": {
-    "apiId": 1713,
+    "apiId": 2479,
     "sdkName": "signplus",
-    "sdkVersion": "1.2.0",
+    "sdkVersion": "1.3.0",
     "languages": ["csharp"],
     "auth": ["bearer"],
+    "docs": [],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "rawConfig": {
       "sdkName": "signplus",
-      "apiVersion": "2.2.0",
+      "apiVersion": "2.3.1",
       "apiName": "signplus-api",
       "specFilePath": "openapi.yaml",
       "languages": ["csharp", "go", "python", "typescript", "java", "php"],
@@ -43,7 +44,7 @@
           "pypiPackageName": "signplus-python",
           "githubRepoName": "signplus-python",
           "ignoreFiles": [],
-          "sdkVersion": "1.2.0",
+          "sdkVersion": "1.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -51,7 +52,7 @@
           "githubRepoName": "signplus-java",
           "groupId": "com.alohi",
           "artifactId": "signplus",
-          "sdkVersion": "2.2.0",
+          "sdkVersion": "2.3.0",
           "liblabVersion": "2",
           "developers": [
             {
@@ -71,7 +72,7 @@
           "npmOrg": "alohi",
           "githubRepoName": "signplus-typescript",
           "ignoreFiles": [],
-          "sdkVersion": "2.2.0",
+          "sdkVersion": "2.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -79,7 +80,7 @@
           "goModuleName": "github.com/alohihq/signplus-go",
           "githubRepoName": "signplus-go",
           "ignoreFiles": [],
-          "sdkVersion": "1.2.0",
+          "sdkVersion": "1.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -87,7 +88,7 @@
           "packageName": "alohi/signplus",
           "githubRepoName": "signplus-php",
           "ignoreFiles": [],
-          "sdkVersion": "2.2.0",
+          "sdkVersion": "2.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -95,7 +96,7 @@
           "packageId": "Alohi.Signplus",
           "githubRepoName": "signplus-sharp",
           "ignoreFiles": [],
-          "sdkVersion": "1.2.0",
+          "sdkVersion": "1.3.0",
           "liblabVersion": "2"
         }
       },
@@ -103,28 +104,38 @@
         "githubOrg": "alohihq"
       }
     },
-    "apiVersion": "2.2.0",
+    "liblabConfigVersion": "1.0.0",
+    "apiVersion": "2.3.1",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
+    "createDocs": false,
     "languageOptions": {
       "csharp": {
-        "packageId": "Alohi.Signplus",
         "githubRepoName": "signplus-sharp",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.3.0",
+        "packageId": "Alohi.Signplus"
       },
       "go": {
-        "goModuleName": "github.com/alohihq/signplus-go",
-        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-go",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.3.0",
+        "goModuleName": "github.com/alohihq/signplus-go",
+        "additionalConstructorParameters": []
       },
       "java": {
+        "githubRepoName": "signplus-java",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "2.3.0",
         "groupId": "com.alohi",
         "artifactId": "signplus",
+        "includeKotlinSnippets": false,
         "developers": [
           {
             "name": "Alohi SA",
@@ -133,44 +144,51 @@
             "organizationUrl": "https://www.alohi.com"
           }
         ],
-        "additionalConstructorParameters": [],
-        "githubRepoName": "signplus-java",
-        "liblabVersion": "2",
-        "sdkVersion": "2.2.0"
+        "additionalConstructorParameters": []
       },
       "python": {
-        "alwaysInitializeOptionals": false,
-        "additionalConstructorParameters": [],
-        "pypiPackageName": "signplus-python",
         "githubRepoName": "signplus-python",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.3.0",
+        "alwaysInitializeOptionals": false,
+        "additionalConstructorParameters": [],
+        "pypiPackageName": "signplus-python"
       },
       "php": {
-        "packageName": "alohi/signplus",
-        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "2.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "2.3.0",
+        "additionalConstructorParameters": [],
+        "packageName": "alohi/signplus"
       },
       "typescript": {
-        "bundle": false,
-        "exportClassDefault": false,
-        "httpClient": "axios",
-        "npmName": "signplus-typescript",
-        "npmOrg": "alohi",
-        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "2.2.0",
-        "generateEnumAs": "enum"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "2.3.0",
+        "additionalConstructorParameters": [],
+        "bundle": false,
+        "denoteCommon": false,
+        "exportClassDefault": false,
+        "generateEnumAs": "enum",
+        "httpClient": "axios",
+        "npmName": "signplus-typescript",
+        "npmOrg": "alohi"
       }
     },
+    "validationsToIgnore": [],
     "publishing": {
-      "githubOrg": "alohihq"
+      "githubOrg": "alohihq",
+      "platform": "github"
+    },
+    "analytics": {
+      "streaming": false,
+      "pagination": false
     },
     "authentication": {
       "access": {
@@ -180,8 +198,6 @@
     "devContainer": false,
     "generateEnv": true,
     "includeOptionalSnippetParameters": true,
-    "inferServiceNames": false,
-    "injectedModels": [],
     "license": {
       "type": "MIT",
       "name": "MIT",
@@ -189,6 +205,7 @@
       "path": "MIT.ejs"
     },
     "responseHeaders": false,
+    "buildAllModels": false,
     "retry": {
       "enabled": true,
       "maxAttempts": 3,
@@ -201,9 +218,10 @@
     },
     "multiTenant": true,
     "includeWatermark": false,
-    "packageId": "Alohi.Signplus",
     "githubRepoName": "signplus-sharp",
     "ignoreFiles": [],
+    "renameIllegalModelProperties": true,
+    "packageId": "Alohi.Signplus",
     "language": "csharp",
     "deliveryMethod": "zip",
     "hooks": {
@@ -213,10 +231,11 @@
     "usesFormData": false,
     "environmentVariables": [],
     "fileOutput": "/tmp",
+    "inferServiceNames": false,
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.9"
+        "axios": "^1.9.0"
       },
       "languages": ["typescript"]
     },
@@ -225,7 +244,8 @@
       "rawQueries": [],
       "queriesData": []
     },
-    "ai": false
+    "ai": false,
+    "specType": "openapi"
   },
   "files": [
     "Alohi.Signplus/Alohi.Signplus.csproj",
@@ -248,7 +268,7 @@
     "Alohi.Signplus/SignplusClient.cs",
     "Alohi.Signplus/Http/Handlers/RetryHandler.cs",
     "Alohi.Signplus/.gitignore",
-    "./LICENSE",
+    "LICENSE",
     "documentation/models/CreateEnvelopeRequest.md",
     "documentation/models/Envelope.md",
     "documentation/models/CreateEnvelopeFromTemplateRequest.md",
@@ -377,6 +397,8 @@
     "Alohi.Signplus/Validation/ListValidator.cs",
     "Alohi.Signplus/Validation/Extensions/ValidationExtensions.cs",
     "Alohi.Signplus/Http/Extensions/UriExtensions.cs",
+    "Example/README.md",
+    ".env.example",
     "Alohi.Signplus/Models/CreateEnvelopeRequest.cs",
     "Alohi.Signplus/Models/Envelope.cs",
     "Alohi.Signplus/Models/CreateEnvelopeFromTemplateRequest.cs",
