@@ -86,5 +86,10 @@ public record Envelope(
         JsonPropertyName("notification"),
         JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
     ]
-        EnvelopeNotification? Notification = null
+        EnvelopeNotification? Notification = null,
+    [property:
+        JsonPropertyName("attachments"),
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+    ]
+        EnvelopeAttachments? Attachments = null
 );

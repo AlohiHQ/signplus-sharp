@@ -2,51 +2,56 @@
 
 A list of all methods in the `SignplusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                       | Description                                        |
-| :---------------------------------------------------------------------------- | :------------------------------------------------- |
-| [CreateEnvelopeAsync](#createenvelopeasync)                                   | Create new envelope                                |
-| [CreateEnvelopeFromTemplateAsync](#createenvelopefromtemplateasync)           | Create new envelope from template                  |
-| [ListEnvelopesAsync](#listenvelopesasync)                                     | List envelopes                                     |
-| [GetEnvelopeAsync](#getenvelopeasync)                                         | Get envelope                                       |
-| [DeleteEnvelopeAsync](#deleteenvelopeasync)                                   | Delete envelope                                    |
-| [DownloadEnvelopeSignedDocumentsAsync](#downloadenvelopesigneddocumentsasync) | Download signed documents for an envelope          |
-| [DownloadEnvelopeCertificateAsync](#downloadenvelopecertificateasync)         | Download certificate of completion for an envelope |
-| [GetEnvelopeDocumentAsync](#getenvelopedocumentasync)                         | Get envelope document                              |
-| [GetEnvelopeDocumentsAsync](#getenvelopedocumentsasync)                       | Get envelope documents                             |
-| [AddEnvelopeDocumentAsync](#addenvelopedocumentasync)                         | Add envelope document                              |
-| [SetEnvelopeDynamicFieldsAsync](#setenvelopedynamicfieldsasync)               | Set envelope dynamic fields                        |
-| [AddEnvelopeSigningStepsAsync](#addenvelopesigningstepsasync)                 | Add envelope signing steps                         |
-| [SendEnvelopeAsync](#sendenvelopeasync)                                       | Send envelope for signature                        |
-| [DuplicateEnvelopeAsync](#duplicateenvelopeasync)                             | Duplicate envelope                                 |
-| [VoidEnvelopeAsync](#voidenvelopeasync)                                       | Void envelope                                      |
-| [RenameEnvelopeAsync](#renameenvelopeasync)                                   | Rename envelope                                    |
-| [SetEnvelopeCommentAsync](#setenvelopecommentasync)                           | Set envelope comment                               |
-| [SetEnvelopeNotificationAsync](#setenvelopenotificationasync)                 | Set envelope notification                          |
-| [SetEnvelopeExpirationDateAsync](#setenvelopeexpirationdateasync)             | Set envelope expiration date                       |
-| [SetEnvelopeLegalityLevelAsync](#setenvelopelegalitylevelasync)               | Set envelope legality level                        |
-| [GetEnvelopeAnnotationsAsync](#getenvelopeannotationsasync)                   | Get envelope annotations                           |
-| [GetEnvelopeDocumentAnnotationsAsync](#getenvelopedocumentannotationsasync)   | Get envelope document annotations                  |
-| [AddEnvelopeAnnotationAsync](#addenvelopeannotationasync)                     | Add envelope annotation                            |
-| [DeleteEnvelopeAnnotationAsync](#deleteenvelopeannotationasync)               | Delete envelope annotation                         |
-| [CreateTemplateAsync](#createtemplateasync)                                   | Create new template                                |
-| [ListTemplatesAsync](#listtemplatesasync)                                     | List templates                                     |
-| [GetTemplateAsync](#gettemplateasync)                                         | Get template                                       |
-| [DeleteTemplateAsync](#deletetemplateasync)                                   | Delete template                                    |
-| [DuplicateTemplateAsync](#duplicatetemplateasync)                             | Duplicate template                                 |
-| [AddTemplateDocumentAsync](#addtemplatedocumentasync)                         | Add template document                              |
-| [GetTemplateDocumentAsync](#gettemplatedocumentasync)                         | Get template document                              |
-| [GetTemplateDocumentsAsync](#gettemplatedocumentsasync)                       | Get template documents                             |
-| [AddTemplateSigningStepsAsync](#addtemplatesigningstepsasync)                 | Add template signing steps                         |
-| [RenameTemplateAsync](#renametemplateasync)                                   | Rename template                                    |
-| [SetTemplateCommentAsync](#settemplatecommentasync)                           | Set template comment                               |
-| [SetTemplateNotificationAsync](#settemplatenotificationasync)                 | Set template notification                          |
-| [GetTemplateAnnotationsAsync](#gettemplateannotationsasync)                   | Get template annotations                           |
-| [GetDocumentTemplateAnnotationsAsync](#getdocumenttemplateannotationsasync)   | Get document template annotations                  |
-| [AddTemplateAnnotationAsync](#addtemplateannotationasync)                     | Add template annotation                            |
-| [DeleteTemplateAnnotationAsync](#deletetemplateannotationasync)               | Delete template annotation                         |
-| [CreateWebhookAsync](#createwebhookasync)                                     | Create webhook                                     |
-| [ListWebhooksAsync](#listwebhooksasync)                                       | List webhooks                                      |
-| [DeleteWebhookAsync](#deletewebhookasync)                                     | Delete webhook                                     |
+| Methods                                                                             | Description                                                     |
+| :---------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| [CreateEnvelopeAsync](#createenvelopeasync)                                         | Create new envelope                                             |
+| [CreateEnvelopeFromTemplateAsync](#createenvelopefromtemplateasync)                 | Create new envelope from template                               |
+| [ListEnvelopesAsync](#listenvelopesasync)                                           | List envelopes                                                  |
+| [GetEnvelopeAsync](#getenvelopeasync)                                               | Get envelope                                                    |
+| [DeleteEnvelopeAsync](#deleteenvelopeasync)                                         | Delete envelope                                                 |
+| [DownloadEnvelopeSignedDocumentsAsync](#downloadenvelopesigneddocumentsasync)       | Download signed documents for an envelope                       |
+| [DownloadEnvelopeCertificateAsync](#downloadenvelopecertificateasync)               | Download certificate of completion for an envelope              |
+| [GetEnvelopeDocumentAsync](#getenvelopedocumentasync)                               | Get envelope document                                           |
+| [GetEnvelopeDocumentsAsync](#getenvelopedocumentsasync)                             | Get envelope documents                                          |
+| [AddEnvelopeDocumentAsync](#addenvelopedocumentasync)                               | Add envelope document                                           |
+| [SetEnvelopeDynamicFieldsAsync](#setenvelopedynamicfieldsasync)                     | Set envelope dynamic fields                                     |
+| [AddEnvelopeSigningStepsAsync](#addenvelopesigningstepsasync)                       | Add envelope signing steps                                      |
+| [SetEnvelopeAttachmentsSettingsAsync](#setenvelopeattachmentssettingsasync)         | Set envelope attachment settings                                |
+| [SetEnvelopeAttachmentsPlaceholdersAsync](#setenvelopeattachmentsplaceholdersasync) | Placeholders to be set, completely replacing the existing ones. |
+| [GetAttachmentFileAsync](#getattachmentfileasync)                                   | Get envelope attachment file                                    |
+| [SendEnvelopeAsync](#sendenvelopeasync)                                             | Send envelope for signature                                     |
+| [DuplicateEnvelopeAsync](#duplicateenvelopeasync)                                   | Duplicate envelope                                              |
+| [VoidEnvelopeAsync](#voidenvelopeasync)                                             | Void envelope                                                   |
+| [RenameEnvelopeAsync](#renameenvelopeasync)                                         | Rename envelope                                                 |
+| [SetEnvelopeCommentAsync](#setenvelopecommentasync)                                 | Set envelope comment                                            |
+| [SetEnvelopeNotificationAsync](#setenvelopenotificationasync)                       | Set envelope notification                                       |
+| [SetEnvelopeExpirationDateAsync](#setenvelopeexpirationdateasync)                   | Set envelope expiration date                                    |
+| [SetEnvelopeLegalityLevelAsync](#setenvelopelegalitylevelasync)                     | Set envelope legality level                                     |
+| [GetEnvelopeAnnotationsAsync](#getenvelopeannotationsasync)                         | Get envelope annotations                                        |
+| [GetEnvelopeDocumentAnnotationsAsync](#getenvelopedocumentannotationsasync)         | Get envelope document annotations                               |
+| [AddEnvelopeAnnotationAsync](#addenvelopeannotationasync)                           | Add envelope annotation                                         |
+| [DeleteEnvelopeAnnotationAsync](#deleteenvelopeannotationasync)                     | Delete envelope annotation                                      |
+| [CreateTemplateAsync](#createtemplateasync)                                         | Create new template                                             |
+| [ListTemplatesAsync](#listtemplatesasync)                                           | List templates                                                  |
+| [GetTemplateAsync](#gettemplateasync)                                               | Get template                                                    |
+| [DeleteTemplateAsync](#deletetemplateasync)                                         | Delete template                                                 |
+| [DuplicateTemplateAsync](#duplicatetemplateasync)                                   | Duplicate template                                              |
+| [AddTemplateDocumentAsync](#addtemplatedocumentasync)                               | Add template document                                           |
+| [GetTemplateDocumentAsync](#gettemplatedocumentasync)                               | Get template document                                           |
+| [GetTemplateDocumentsAsync](#gettemplatedocumentsasync)                             | Get template documents                                          |
+| [AddTemplateSigningStepsAsync](#addtemplatesigningstepsasync)                       | Add template signing steps                                      |
+| [RenameTemplateAsync](#renametemplateasync)                                         | Rename template                                                 |
+| [SetTemplateCommentAsync](#settemplatecommentasync)                                 | Set template comment                                            |
+| [SetTemplateNotificationAsync](#settemplatenotificationasync)                       | Set template notification                                       |
+| [GetTemplateAnnotationsAsync](#gettemplateannotationsasync)                         | Get template annotations                                        |
+| [GetDocumentTemplateAnnotationsAsync](#getdocumenttemplateannotationsasync)         | Get document template annotations                               |
+| [AddTemplateAnnotationAsync](#addtemplateannotationasync)                           | Add template annotation                                         |
+| [DeleteTemplateAnnotationAsync](#deletetemplateannotationasync)                     | Delete template annotation                                      |
+| [SetTemplateAttachmentsSettingsAsync](#settemplateattachmentssettingsasync)         | Set template attachment settings                                |
+| [SetTemplateAttachmentsPlaceholdersAsync](#settemplateattachmentsplaceholdersasync) | Placeholders to be set, completely replacing the existing ones. |
+| [CreateWebhookAsync](#createwebhookasync)                                           | Create webhook                                                  |
+| [ListWebhooksAsync](#listwebhooksasync)                                             | List webhooks                                                   |
+| [DeleteWebhookAsync](#deletewebhookasync)                                           | Delete webhook                                                  |
 
 ## CreateEnvelopeAsync
 
@@ -71,11 +76,8 @@ Create new envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -110,15 +112,12 @@ Create new envelope from template
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
-var input = new CreateEnvelopeFromTemplateRequest("name", "comment", false);
+var input = new CreateEnvelopeFromTemplateRequest("name", "comment", true);
 
 var response = await client.Signplus.CreateEnvelopeFromTemplateAsync(input, "template_id");
 
@@ -148,11 +147,8 @@ List envelopes
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -160,7 +156,7 @@ var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
 var statuses = new List<EnvelopeStatus>() { EnvelopeStatus.Draft };
 var folderIds = new List<string>() { "folder_ids" };
-var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, true, 4, 7, "uid", 8, 9, "after", "before", EnvelopeOrderField.CreationDate, false, true);
+var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, true, 5, 9, "uid", 9, 7, "after", "before", EnvelopeOrderField.CreationDate, true, true);
 
 var response = await client.Signplus.ListEnvelopesAsync(input);
 
@@ -189,11 +185,8 @@ Get envelope
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -220,11 +213,8 @@ Delete envelope
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -254,11 +244,8 @@ Download signed documents for an envelope
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -289,11 +276,8 @@ Download certificate of completion for an envelope
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -325,11 +309,8 @@ Get envelope document
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -360,11 +341,8 @@ Get envelope documents
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -397,11 +375,8 @@ Add envelope document
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -436,11 +411,8 @@ Set envelope dynamic fields
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -477,11 +449,8 @@ Add envelope signing steps
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -493,6 +462,114 @@ var signingSteps = new List<SigningStep>() { signingStepsItem };
 var input = new AddEnvelopeSigningStepsRequest(signingSteps);
 
 var response = await client.Signplus.AddEnvelopeSigningStepsAsync(input, "envelope_id");
+
+Console.WriteLine(response);
+```
+
+## SetEnvelopeAttachmentsSettingsAsync
+
+Set envelope attachment settings
+
+- HTTP Method: `PUT`
+- Endpoint: `/envelope/{envelope_id}/attachments/settings`
+
+**Parameters**
+
+| Name       | Type                                  | Required | Description       |
+| :--------- | :------------------------------------ | :------- | :---------------- |
+| input      | SetEnvelopeAttachmentsSettingsRequest | ✅       | The request body. |
+| envelopeId | string                                | ✅       |                   |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+
+var config = new SignplusConfig{};
+
+var client = new SignplusClient(config);
+
+var settings = new AttachmentSettings(false);
+var input = new SetEnvelopeAttachmentsSettingsRequest(settings);
+
+var response = await client.Signplus.SetEnvelopeAttachmentsSettingsAsync(input, "envelope_id");
+
+Console.WriteLine(response);
+```
+
+## SetEnvelopeAttachmentsPlaceholdersAsync
+
+Placeholders to be set, completely replacing the existing ones.
+
+- HTTP Method: `PUT`
+- Endpoint: `/envelope/{envelope_id}/attachments/placeholders`
+
+**Parameters**
+
+| Name       | Type                                      | Required | Description       |
+| :--------- | :---------------------------------------- | :------- | :---------------- |
+| input      | SetEnvelopeAttachmentsPlaceholdersRequest | ✅       | The request body. |
+| envelopeId | string                                    | ✅       |                   |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+
+var config = new SignplusConfig{};
+
+var client = new SignplusClient(config);
+
+var placeholdersItem = new AttachmentPlaceholderRequest("recipient_id", "name", false, true, "id", "hint");
+var placeholders = new List<AttachmentPlaceholderRequest>() { placeholdersItem };
+var input = new SetEnvelopeAttachmentsPlaceholdersRequest(placeholders);
+
+var response = await client.Signplus.SetEnvelopeAttachmentsPlaceholdersAsync(input, "envelope_id");
+
+Console.WriteLine(response);
+```
+
+## GetAttachmentFileAsync
+
+Get envelope attachment file
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/attachments/{file_id}`
+
+**Parameters**
+
+| Name       | Type   | Required | Description |
+| :--------- | :----- | :------- | :---------- |
+| envelopeId | string | ✅       |             |
+| fileId     | string | ✅       |             |
+
+**Return Type**
+
+`byte[]`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+
+var config = new SignplusConfig{};
+
+var client = new SignplusClient(config);
+
+var response = await client.Signplus.GetAttachmentFileAsync("envelope_id", "file_id");
 
 Console.WriteLine(response);
 ```
@@ -519,11 +596,8 @@ Send envelope for signature
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -554,11 +628,8 @@ Duplicate envelope
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -589,11 +660,8 @@ Void envelope
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -626,11 +694,8 @@ Rename envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -665,11 +730,8 @@ Set envelope comment
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -704,11 +766,8 @@ Set envelope notification
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -743,15 +802,12 @@ Set envelope expiration date
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
-var input = new SetEnvelopeExpirationRequest(1);
+var input = new SetEnvelopeExpirationRequest(0);
 
 var response = await client.Signplus.SetEnvelopeExpirationDateAsync(input, "envelope_id");
 
@@ -782,11 +838,8 @@ Set envelope legality level
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -819,11 +872,8 @@ Get envelope annotations
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -855,11 +905,8 @@ Get envelope document annotations
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -892,22 +939,19 @@ Add envelope annotation
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
 var signature = new AnnotationSignature("id");
 var initials = new AnnotationInitials("id");
 var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var text = new AnnotationText(8.1, 9.31, "value", "tooltip", "dynamic_field_name", font);
+var text = new AnnotationText(5.96, 8.73, "value", "tooltip", "dynamic_field_name", font);
 var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var datetime = new AnnotationDateTime(3.28, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
-var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 7, 2.27, 4.71, 0.96, 6.36, AnnotationType.Text, "recipient_id", true, signature, initials, text, datetime, checkbox);
+var datetime = new AnnotationDateTime(0.26, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
+var checkbox = new AnnotationCheckbox(true, AnnotationCheckboxStyle.CircleCheck);
+var input = new AddAnnotationRequest("document_id", 2, 1.99, 8.2, 4.89, 9.43, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddEnvelopeAnnotationAsync(input, "envelope_id");
 
@@ -933,11 +977,8 @@ Delete envelope annotation
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -967,11 +1008,8 @@ Create new template
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1005,17 +1043,14 @@ List templates
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
 var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
-var input = new ListTemplatesRequest("name", tags, ids, 2, 5, "after", "before", TemplateOrderField.TemplateId, true);
+var input = new ListTemplatesRequest("name", tags, ids, 1, 6, "after", "before", TemplateOrderField.TemplateId, false);
 
 var response = await client.Signplus.ListTemplatesAsync(input);
 
@@ -1044,11 +1079,8 @@ Get template
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1075,11 +1107,8 @@ Delete template
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1108,11 +1137,8 @@ Duplicate template
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1145,11 +1171,8 @@ Add template document
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1183,11 +1206,8 @@ Get template document
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1218,11 +1238,8 @@ Get template documents
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1255,11 +1272,8 @@ Add template signing steps
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1298,11 +1312,8 @@ Rename template
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1337,11 +1348,8 @@ Set template comment
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1376,11 +1384,8 @@ Set template notification
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1413,11 +1418,8 @@ Get template annotations
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1449,11 +1451,8 @@ Get document template annotations
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1486,22 +1485,19 @@ Add template annotation
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
 var signature = new AnnotationSignature("id");
 var initials = new AnnotationInitials("id");
 var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var text = new AnnotationText(8.1, 9.31, "value", "tooltip", "dynamic_field_name", font);
+var text = new AnnotationText(5.96, 8.73, "value", "tooltip", "dynamic_field_name", font);
 var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var datetime = new AnnotationDateTime(3.28, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
-var checkbox = new AnnotationCheckbox(false, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 7, 2.27, 4.71, 0.96, 6.36, AnnotationType.Text, "recipient_id", true, signature, initials, text, datetime, checkbox);
+var datetime = new AnnotationDateTime(0.26, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
+var checkbox = new AnnotationCheckbox(true, AnnotationCheckboxStyle.CircleCheck);
+var input = new AddAnnotationRequest("document_id", 2, 1.99, 8.2, 4.89, 9.43, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
 
 var response = await client.Signplus.AddTemplateAnnotationAsync(input, "template_id");
 
@@ -1527,15 +1523,87 @@ Delete template annotation
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
 await client.Signplus.DeleteTemplateAnnotationAsync("template_id", "annotation_id");
+```
+
+## SetTemplateAttachmentsSettingsAsync
+
+Set template attachment settings
+
+- HTTP Method: `PUT`
+- Endpoint: `/template/{template_id}/attachments/settings`
+
+**Parameters**
+
+| Name       | Type                                  | Required | Description       |
+| :--------- | :------------------------------------ | :------- | :---------------- |
+| input      | SetEnvelopeAttachmentsSettingsRequest | ✅       | The request body. |
+| templateId | string                                | ✅       |                   |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+
+var config = new SignplusConfig{};
+
+var client = new SignplusClient(config);
+
+var settings = new AttachmentSettings(false);
+var input = new SetEnvelopeAttachmentsSettingsRequest(settings);
+
+var response = await client.Signplus.SetTemplateAttachmentsSettingsAsync(input, "template_id");
+
+Console.WriteLine(response);
+```
+
+## SetTemplateAttachmentsPlaceholdersAsync
+
+Placeholders to be set, completely replacing the existing ones.
+
+- HTTP Method: `PUT`
+- Endpoint: `/template/{template_id}/attachments/placeholders`
+
+**Parameters**
+
+| Name       | Type                                      | Required | Description       |
+| :--------- | :---------------------------------------- | :------- | :---------------- |
+| input      | SetEnvelopeAttachmentsPlaceholdersRequest | ✅       | The request body. |
+| templateId | string                                    | ✅       |                   |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```csharp
+using Alohi.Signplus;
+using Alohi.Signplus.Config;
+using Alohi.Signplus.Models;
+
+var config = new SignplusConfig{};
+
+var client = new SignplusClient(config);
+
+var placeholdersItem = new AttachmentPlaceholderRequest("recipient_id", "name", false, true, "id", "hint");
+var placeholders = new List<AttachmentPlaceholderRequest>() { placeholdersItem };
+var input = new SetEnvelopeAttachmentsPlaceholdersRequest(placeholders);
+
+var response = await client.Signplus.SetTemplateAttachmentsPlaceholdersAsync(input, "template_id");
+
+Console.WriteLine(response);
 ```
 
 ## CreateWebhookAsync
@@ -1561,11 +1629,8 @@ Create webhook
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1599,11 +1664,8 @@ List webhooks
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 
@@ -1632,11 +1694,8 @@ Delete webhook
 ```csharp
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
-using Environment = Alohi.Signplus.Http.Environment;
 
-var config = new SignplusConfig{
-    Environment = Environment.Default
-};
+var config = new SignplusConfig{};
 
 var client = new SignplusClient(config);
 

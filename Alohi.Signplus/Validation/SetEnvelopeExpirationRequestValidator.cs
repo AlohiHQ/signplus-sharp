@@ -11,6 +11,6 @@ public class SetEnvelopeExpirationRequestValidator
     {
         RuleFor(SetEnvelopeExpirationRequest => SetEnvelopeExpirationRequest.ExpiresAt)
             .NotNull()
-            .WithMessage("Field expires_at is required.");
+            .WithMessage("Field expires_at is required and cannot be null.");
     }
 }

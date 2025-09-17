@@ -10,6 +10,6 @@ public class SetEnvelopeCommentRequestValidator : AbstractValidator<SetEnvelopeC
     {
         RuleFor(SetEnvelopeCommentRequest => SetEnvelopeCommentRequest.Comment)
             .NotNull()
-            .WithMessage("Field comment is required.");
+            .WithMessage("Field comment is required and cannot be null.");
     }
 }

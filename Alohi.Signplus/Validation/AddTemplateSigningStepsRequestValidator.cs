@@ -11,6 +11,6 @@ public class AddTemplateSigningStepsRequestValidator
     {
         RuleFor(AddTemplateSigningStepsRequest => AddTemplateSigningStepsRequest.SigningSteps)
             .NotNull()
-            .WithMessage("Field signing_steps is required.");
+            .WithMessage("Field signing_steps is required and cannot be null.");
     }
 }

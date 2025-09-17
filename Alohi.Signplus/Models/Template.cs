@@ -74,5 +74,10 @@ public record Template(
         JsonPropertyName("dynamic_fields"),
         JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
     ]
-        List<string>? DynamicFields = null
+        List<string>? DynamicFields = null,
+    [property:
+        JsonPropertyName("attachments"),
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+    ]
+        EnvelopeAttachments? Attachments = null
 );

@@ -10,6 +10,6 @@ public class RenameTemplateRequestValidator : AbstractValidator<RenameTemplateRe
     {
         RuleFor(RenameTemplateRequest => RenameTemplateRequest.Name)
             .NotNull()
-            .WithMessage("Field name is required.");
+            .WithMessage("Field name is required and cannot be null.");
     }
 }

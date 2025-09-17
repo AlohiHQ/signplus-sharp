@@ -117,7 +117,9 @@ public static class Serializer
                     is JsonPropertyNameAttribute jsonProperty
                     ? jsonProperty.Name
                     : p.Name;
-                return (name, value: p.GetValue(o));
+                var value = p.GetValue(o);
+
+                return (name, value);
             })
             .Where(p => p.value != null);
 
