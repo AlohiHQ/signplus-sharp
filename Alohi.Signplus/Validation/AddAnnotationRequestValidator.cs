@@ -10,24 +10,24 @@ public class AddAnnotationRequestValidator : AbstractValidator<AddAnnotationRequ
     {
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.DocumentId)
             .NotNull()
-            .WithMessage("Field document_id is required.");
+            .WithMessage("Field document_id is required and cannot be null.");
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.Page)
             .NotNull()
-            .WithMessage("Field page is required.");
+            .WithMessage("Field page is required and cannot be null.");
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.X)
             .NotNull()
-            .WithMessage("Field x is required.");
+            .WithMessage("Field x is required and cannot be null.");
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.Y)
             .NotNull()
-            .WithMessage("Field y is required.");
+            .WithMessage("Field y is required and cannot be null.");
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.Width)
             .NotNull()
-            .WithMessage("Field width is required.");
+            .WithMessage("Field width is required and cannot be null.");
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.Height)
             .NotNull()
-            .WithMessage("Field height is required.");
+            .WithMessage("Field height is required and cannot be null.");
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.Type_)
             .NotNull()
-            .WithMessage("Field type is required.");
+            .WithMessage("Field type is required and cannot be null.");
     }
 }

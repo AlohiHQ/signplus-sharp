@@ -57,6 +57,24 @@ public class SignplusClient : IDisposable
     }
 
     /// <summary>
+    /// Sets the timeout for the entire SDK.
+    /// </summary>
+    /// <param name="timeout">The timeout value. Must be a positive TimeSpan or Timeout.InfiniteTimeSpan.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if the timeout is not valid.</exception>
+    public void SetTimeout(TimeSpan timeout)
+    {
+        if (timeout <= TimeSpan.Zero && timeout != Timeout.InfiniteTimeSpan)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(timeout),
+                "Timeout must be a positive value or Timeout.InfiniteTimeSpan."
+            );
+        }
+
+        _httpClient.Timeout = timeout;
+    }
+
+    /// <summary>
     /// Sets the access token for the entire SDK.
     /// </summary>
     public void SetAccessToken(string token)

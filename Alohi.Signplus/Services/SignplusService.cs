@@ -23,6 +23,9 @@ public class SignplusService : BaseService
     {
         ArgumentNullException.ThrowIfNull(input, nameof(input));
         var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var validator = new CreateEnvelopeRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -38,10 +41,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Create new envelope from template</summary>
@@ -61,6 +68,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new CreateEnvelopeFromTemplateRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -77,10 +88,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>List envelopes</summary>
@@ -91,6 +106,9 @@ public class SignplusService : BaseService
     {
         ArgumentNullException.ThrowIfNull(input, nameof(input));
         var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var validator = new ListEnvelopesRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -106,13 +124,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListEnvelopesResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get envelope</summary>
@@ -145,10 +167,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Delete envelope</summary>
@@ -218,10 +244,13 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result = await response
             .EnsureSuccessfulResponse()
             .Content.ReadFromJsonAsync<object>(_jsonSerializerOptions, cancellationToken)
             .ConfigureAwait(false);
+
+        return result;
     }
 
     /// <summary>Download certificate of completion for an envelope</summary>
@@ -255,10 +284,13 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result = await response
             .EnsureSuccessfulResponse()
             .Content.ReadFromJsonAsync<object>(_jsonSerializerOptions, cancellationToken)
             .ConfigureAwait(false);
+
+        return result;
     }
 
     /// <summary>Get envelope document</summary>
@@ -305,10 +337,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Document>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get envelope documents</summary>
@@ -341,13 +377,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListEnvelopeDocumentsResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Add envelope document</summary>
@@ -367,6 +407,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new AddEnvelopeDocumentRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -383,10 +427,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Document>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set envelope dynamic fields</summary>
@@ -406,6 +454,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new SetEnvelopeDynamicFieldsRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -422,10 +474,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Add envelope signing steps</summary>
@@ -445,6 +501,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new AddEnvelopeSigningStepsRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -461,10 +521,173 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
+    }
+
+    /// <summary>Set envelope attachment settings</summary>
+    public async Task<EnvelopeAttachments> SetEnvelopeAttachmentsSettingsAsync(
+        SetEnvelopeAttachmentsSettingsRequest input,
+        string envelopeId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(input, nameof(input));
+        ArgumentNullException.ThrowIfNull(envelopeId, nameof(envelopeId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var envelopeIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)envelopeId
+        );
+        if (envelopeIdValidationResult != null)
+        {
+            validationResults.Add(envelopeIdValidationResult);
+        }
+        ;
+        var validator = new SetEnvelopeAttachmentsSettingsRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(
+            HttpMethod.Put,
+            "envelope/{envelope_id}/attachments/settings"
+        )
+            .SetPathParameter("envelope_id", envelopeId)
+            .SetContentAsJson(input, _jsonSerializerOptions)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        // Standard deserialization
+        var result =
+            await response
+                .EnsureSuccessfulResponse()
+                .Content.ReadFromJsonAsync<EnvelopeAttachments>(
+                    _jsonSerializerOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
+    }
+
+    /// <summary>Placeholders to be set, completely replacing the existing ones.</summary>
+    public async Task<EnvelopeAttachments> SetEnvelopeAttachmentsPlaceholdersAsync(
+        SetEnvelopeAttachmentsPlaceholdersRequest input,
+        string envelopeId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(input, nameof(input));
+        ArgumentNullException.ThrowIfNull(envelopeId, nameof(envelopeId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var envelopeIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)envelopeId
+        );
+        if (envelopeIdValidationResult != null)
+        {
+            validationResults.Add(envelopeIdValidationResult);
+        }
+        ;
+        var validator = new SetEnvelopeAttachmentsPlaceholdersRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(
+            HttpMethod.Put,
+            "envelope/{envelope_id}/attachments/placeholders"
+        )
+            .SetPathParameter("envelope_id", envelopeId)
+            .SetContentAsJson(input, _jsonSerializerOptions)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        // Standard deserialization
+        var result =
+            await response
+                .EnsureSuccessfulResponse()
+                .Content.ReadFromJsonAsync<EnvelopeAttachments>(
+                    _jsonSerializerOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
+    }
+
+    /// <summary>Get envelope attachment file</summary>
+    public async Task<byte[]> GetAttachmentFileAsync(
+        string envelopeId,
+        string fileId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(envelopeId, nameof(envelopeId));
+        ArgumentNullException.ThrowIfNull(fileId, nameof(fileId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var envelopeIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)envelopeId
+        );
+        if (envelopeIdValidationResult != null)
+        {
+            validationResults.Add(envelopeIdValidationResult);
+        }
+        ;
+        var fileIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)fileId
+        );
+        if (fileIdValidationResult != null)
+        {
+            validationResults.Add(fileIdValidationResult);
+        }
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(
+            HttpMethod.Get,
+            "envelope/{envelope_id}/attachments/{file_id}"
+        )
+            .SetPathParameter("envelope_id", envelopeId)
+            .SetPathParameter("file_id", fileId)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        // Standard deserialization
+        var result = await response
+            .EnsureSuccessfulResponse()
+            .Content.ReadAsByteArrayAsync(cancellationToken)
+            .ConfigureAwait(false);
+
+        return result;
     }
 
     /// <summary>Send envelope for signature</summary>
@@ -497,10 +720,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Duplicate envelope</summary>
@@ -533,10 +760,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Void envelope</summary>
@@ -569,10 +800,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Rename envelope</summary>
@@ -592,6 +827,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new RenameEnvelopeRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -608,10 +847,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set envelope comment</summary>
@@ -631,6 +874,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new SetEnvelopeCommentRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -647,10 +894,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set envelope notification</summary>
@@ -670,6 +921,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new EnvelopeNotificationValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -686,10 +941,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set envelope expiration date</summary>
@@ -709,6 +968,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new SetEnvelopeExpirationRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -728,10 +991,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set envelope legality level</summary>
@@ -751,6 +1018,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new SetEnvelopeLegalityLevelRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -770,10 +1041,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Envelope>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get envelope annotations</summary>
@@ -807,13 +1082,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<List<Annotation>>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get envelope document annotations</summary>
@@ -862,13 +1141,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListEnvelopeDocumentAnnotationsResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Add envelope annotation</summary>
@@ -889,6 +1172,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(envelopeIdValidationResult);
         }
+        ;
+        var validator = new AddAnnotationRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -905,10 +1192,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Annotation>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Delete envelope annotation</summary>
@@ -968,6 +1259,9 @@ public class SignplusService : BaseService
     {
         ArgumentNullException.ThrowIfNull(input, nameof(input));
         var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var validator = new CreateTemplateRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -983,10 +1277,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>List templates</summary>
@@ -997,6 +1295,9 @@ public class SignplusService : BaseService
     {
         ArgumentNullException.ThrowIfNull(input, nameof(input));
         var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var validator = new ListTemplatesRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1012,13 +1313,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListTemplatesResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get template</summary>
@@ -1051,10 +1356,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Delete template</summary>
@@ -1120,10 +1429,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Add template document</summary>
@@ -1143,6 +1456,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new AddTemplateDocumentRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1159,10 +1476,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Document>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get template document</summary>
@@ -1209,10 +1530,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Document>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get template documents</summary>
@@ -1245,13 +1570,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListTemplateDocumentsResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Add template signing steps</summary>
@@ -1271,6 +1600,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new AddTemplateSigningStepsRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1287,10 +1620,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Rename template</summary>
@@ -1310,6 +1647,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new RenameTemplateRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1326,10 +1667,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set template comment</summary>
@@ -1349,6 +1694,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new SetTemplateCommentRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1365,10 +1714,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Set template notification</summary>
@@ -1388,6 +1741,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new EnvelopeNotificationValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1404,10 +1761,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Template>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get template annotations</summary>
@@ -1441,13 +1802,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListTemplateAnnotationsResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Get document template annotations</summary>
@@ -1496,13 +1861,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListTemplateDocumentAnnotationsResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Add template annotation</summary>
@@ -1523,6 +1892,10 @@ public class SignplusService : BaseService
         {
             validationResults.Add(templateIdValidationResult);
         }
+        ;
+        var validator = new AddAnnotationRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1539,10 +1912,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Annotation>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Delete template annotation</summary>
@@ -1594,6 +1971,112 @@ public class SignplusService : BaseService
         response.EnsureSuccessfulResponse();
     }
 
+    /// <summary>Set template attachment settings</summary>
+    public async Task<EnvelopeAttachments> SetTemplateAttachmentsSettingsAsync(
+        SetEnvelopeAttachmentsSettingsRequest input,
+        string templateId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(input, nameof(input));
+        ArgumentNullException.ThrowIfNull(templateId, nameof(templateId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var templateIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)templateId
+        );
+        if (templateIdValidationResult != null)
+        {
+            validationResults.Add(templateIdValidationResult);
+        }
+        ;
+        var validator = new SetEnvelopeAttachmentsSettingsRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(
+            HttpMethod.Put,
+            "template/{template_id}/attachments/settings"
+        )
+            .SetPathParameter("template_id", templateId)
+            .SetContentAsJson(input, _jsonSerializerOptions)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        // Standard deserialization
+        var result =
+            await response
+                .EnsureSuccessfulResponse()
+                .Content.ReadFromJsonAsync<EnvelopeAttachments>(
+                    _jsonSerializerOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
+    }
+
+    /// <summary>Placeholders to be set, completely replacing the existing ones.</summary>
+    public async Task<EnvelopeAttachments> SetTemplateAttachmentsPlaceholdersAsync(
+        SetEnvelopeAttachmentsPlaceholdersRequest input,
+        string templateId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        ArgumentNullException.ThrowIfNull(input, nameof(input));
+        ArgumentNullException.ThrowIfNull(templateId, nameof(templateId));
+        var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var templateIdValidationResult = new StringValidator().ValidateRequired<string?>(
+            (string?)templateId
+        );
+        if (templateIdValidationResult != null)
+        {
+            validationResults.Add(templateIdValidationResult);
+        }
+        ;
+        var validator = new SetEnvelopeAttachmentsPlaceholdersRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
+
+        var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
+        if (combinedFailures.Any())
+        {
+            throw new Http.Exceptions.ValidationException(combinedFailures);
+        }
+
+        var request = new RequestBuilder(
+            HttpMethod.Put,
+            "template/{template_id}/attachments/placeholders"
+        )
+            .SetPathParameter("template_id", templateId)
+            .SetContentAsJson(input, _jsonSerializerOptions)
+            .Build();
+
+        var response = await _httpClient
+            .SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
+
+        // Standard deserialization
+        var result =
+            await response
+                .EnsureSuccessfulResponse()
+                .Content.ReadFromJsonAsync<EnvelopeAttachments>(
+                    _jsonSerializerOptions,
+                    cancellationToken
+                )
+                .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
+    }
+
     /// <summary>Create webhook</summary>
     public async Task<Webhook> CreateWebhookAsync(
         CreateWebhookRequest input,
@@ -1602,6 +2085,9 @@ public class SignplusService : BaseService
     {
         ArgumentNullException.ThrowIfNull(input, nameof(input));
         var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var validator = new CreateWebhookRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1617,10 +2103,14 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<Webhook>(_jsonSerializerOptions, cancellationToken)
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>List webhooks</summary>
@@ -1631,6 +2121,9 @@ public class SignplusService : BaseService
     {
         ArgumentNullException.ThrowIfNull(input, nameof(input));
         var validationResults = new List<FluentValidation.Results.ValidationResult> { };
+        var validator = new ListWebhooksRequestValidator();
+        var validationResult = validator.Validate(input);
+        validationResults.Add(validationResult);
 
         var combinedFailures = validationResults.SelectMany(result => result.Errors).ToList();
         if (combinedFailures.Any())
@@ -1646,13 +2139,17 @@ public class SignplusService : BaseService
             .SendAsync(request, cancellationToken)
             .ConfigureAwait(false);
 
-        return await response
+        // Standard deserialization
+        var result =
+            await response
                 .EnsureSuccessfulResponse()
                 .Content.ReadFromJsonAsync<ListWebhooksResponse>(
                     _jsonSerializerOptions,
                     cancellationToken
                 )
                 .ConfigureAwait(false) ?? throw new Exception("Failed to deserialize response.");
+
+        return result;
     }
 
     /// <summary>Delete webhook</summary>

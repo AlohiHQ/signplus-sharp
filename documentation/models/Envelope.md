@@ -19,3 +19,4 @@
 | SigningSteps  | List<SigningStep>     | ❌       |                                                                                                                                                                         |
 | Documents     | List<Document>        | ❌       |                                                                                                                                                                         |
 | Notification  | EnvelopeNotification  | ❌       |                                                                                                                                                                         |
+| Attachments   | EnvelopeAttachments   | ❌       |                                                                                                                                                                         |

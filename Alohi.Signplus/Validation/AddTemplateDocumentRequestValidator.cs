@@ -10,6 +10,6 @@ public class AddTemplateDocumentRequestValidator : AbstractValidator<AddTemplate
     {
         RuleFor(AddTemplateDocumentRequest => AddTemplateDocumentRequest.File)
             .NotNull()
-            .WithMessage("Field file is required.");
+            .WithMessage("Field file is required and cannot be null.");
     }
 }

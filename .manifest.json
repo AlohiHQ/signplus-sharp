@@ -1,10 +1,10 @@
 {
-  "liblabVersion": "2.25.35",
-  "date": "2025-07-14T14:19:38.252Z",
+  "liblabVersion": "2.25.46",
+  "date": "2025-09-17T12:01:31.249Z",
   "config": {
-    "apiId": 2479,
+    "apiId": 2744,
     "sdkName": "signplus",
-    "sdkVersion": "1.3.0",
+    "sdkVersion": "1.4.0",
     "languages": ["csharp"],
     "auth": ["bearer"],
     "docs": [],
@@ -12,7 +12,7 @@
     "deliveryMethods": ["zip"],
     "rawConfig": {
       "sdkName": "signplus",
-      "apiVersion": "2.3.1",
+      "apiVersion": "2.5.0",
       "apiName": "signplus-api",
       "specFilePath": "openapi.yaml",
       "languages": ["csharp", "go", "python", "typescript", "java", "php"],
@@ -44,7 +44,7 @@
           "pypiPackageName": "signplus-python",
           "githubRepoName": "signplus-python",
           "ignoreFiles": [],
-          "sdkVersion": "1.3.0",
+          "sdkVersion": "1.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -52,7 +52,7 @@
           "githubRepoName": "signplus-java",
           "groupId": "com.alohi",
           "artifactId": "signplus",
-          "sdkVersion": "2.3.0",
+          "sdkVersion": "2.4.0",
           "liblabVersion": "2",
           "developers": [
             {
@@ -72,7 +72,7 @@
           "npmOrg": "alohi",
           "githubRepoName": "signplus-typescript",
           "ignoreFiles": [],
-          "sdkVersion": "2.3.0",
+          "sdkVersion": "2.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -80,7 +80,7 @@
           "goModuleName": "github.com/alohihq/signplus-go",
           "githubRepoName": "signplus-go",
           "ignoreFiles": [],
-          "sdkVersion": "1.3.0",
+          "sdkVersion": "1.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -88,7 +88,7 @@
           "packageName": "alohi/signplus",
           "githubRepoName": "signplus-php",
           "ignoreFiles": [],
-          "sdkVersion": "2.3.0",
+          "sdkVersion": "2.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -96,7 +96,7 @@
           "packageId": "Alohi.Signplus",
           "githubRepoName": "signplus-sharp",
           "ignoreFiles": [],
-          "sdkVersion": "1.3.0",
+          "sdkVersion": "1.4.0",
           "liblabVersion": "2"
         }
       },
@@ -105,7 +105,7 @@
       }
     },
     "liblabConfigVersion": "1.0.0",
-    "apiVersion": "2.3.1",
+    "apiVersion": "2.5.0",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
     "createDocs": false,
@@ -115,7 +115,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.3.0",
+        "sdkVersion": "1.4.0",
         "packageId": "Alohi.Signplus"
       },
       "go": {
@@ -123,7 +123,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.3.0",
+        "sdkVersion": "1.4.0",
         "goModuleName": "github.com/alohihq/signplus-go",
         "additionalConstructorParameters": []
       },
@@ -132,7 +132,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "2.3.0",
+        "sdkVersion": "2.4.0",
         "groupId": "com.alohi",
         "artifactId": "signplus",
         "includeKotlinSnippets": false,
@@ -151,7 +151,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.3.0",
+        "sdkVersion": "1.4.0",
         "alwaysInitializeOptionals": false,
         "additionalConstructorParameters": [],
         "pypiPackageName": "signplus-python"
@@ -161,7 +161,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "2.3.0",
+        "sdkVersion": "2.4.0",
         "additionalConstructorParameters": [],
         "packageName": "alohi/signplus"
       },
@@ -170,7 +170,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "2.3.0",
+        "sdkVersion": "2.4.0",
         "additionalConstructorParameters": [],
         "bundle": false,
         "denoteCommon": false,
@@ -245,7 +245,10 @@
       "queriesData": []
     },
     "ai": false,
-    "specType": "openapi"
+    "specType": "openapi",
+    "deprecatedOperations": {
+      "include": true
+    }
   },
   "files": [
     "Alohi.Signplus/Alohi.Signplus.csproj",
@@ -279,6 +282,9 @@
     "documentation/models/AddEnvelopeDocumentRequest.md",
     "documentation/models/SetEnvelopeDynamicFieldsRequest.md",
     "documentation/models/AddEnvelopeSigningStepsRequest.md",
+    "documentation/models/SetEnvelopeAttachmentsSettingsRequest.md",
+    "documentation/models/EnvelopeAttachments.md",
+    "documentation/models/SetEnvelopeAttachmentsPlaceholdersRequest.md",
     "documentation/models/RenameEnvelopeRequest.md",
     "documentation/models/SetEnvelopeCommentRequest.md",
     "documentation/models/EnvelopeNotification.md",
@@ -311,8 +317,13 @@
     "documentation/models/RecipientVerification.md",
     "documentation/models/RecipientVerificationType.md",
     "documentation/models/Page.md",
+    "documentation/models/AttachmentSettings.md",
+    "documentation/models/AttachmentPlaceholdersPerRecipient.md",
+    "documentation/models/AttachmentPlaceholder.md",
+    "documentation/models/AttachmentPlaceholderFile.md",
     "documentation/models/EnvelopeOrderField.md",
     "documentation/models/DynamicField.md",
+    "documentation/models/AttachmentPlaceholderRequest.md",
     "documentation/models/AnnotationType.md",
     "documentation/models/AnnotationSignature.md",
     "documentation/models/AnnotationInitials.md",
@@ -341,6 +352,9 @@
     "Alohi.Signplus/Validation/AddEnvelopeDocumentRequestValidator.cs",
     "Alohi.Signplus/Validation/SetEnvelopeDynamicFieldsRequestValidator.cs",
     "Alohi.Signplus/Validation/AddEnvelopeSigningStepsRequestValidator.cs",
+    "Alohi.Signplus/Validation/SetEnvelopeAttachmentsSettingsRequestValidator.cs",
+    "Alohi.Signplus/Validation/EnvelopeAttachmentsValidator.cs",
+    "Alohi.Signplus/Validation/SetEnvelopeAttachmentsPlaceholdersRequestValidator.cs",
     "Alohi.Signplus/Validation/RenameEnvelopeRequestValidator.cs",
     "Alohi.Signplus/Validation/SetEnvelopeCommentRequestValidator.cs",
     "Alohi.Signplus/Validation/EnvelopeNotificationValidator.cs",
@@ -373,8 +387,13 @@
     "Alohi.Signplus/Validation/RecipientVerificationValidator.cs",
     "Alohi.Signplus/Validation/RecipientVerificationTypeValidator.cs",
     "Alohi.Signplus/Validation/PageValidator.cs",
+    "Alohi.Signplus/Validation/AttachmentSettingsValidator.cs",
+    "Alohi.Signplus/Validation/AttachmentPlaceholdersPerRecipientValidator.cs",
+    "Alohi.Signplus/Validation/AttachmentPlaceholderValidator.cs",
+    "Alohi.Signplus/Validation/AttachmentPlaceholderFileValidator.cs",
     "Alohi.Signplus/Validation/EnvelopeOrderFieldValidator.cs",
     "Alohi.Signplus/Validation/DynamicFieldValidator.cs",
+    "Alohi.Signplus/Validation/AttachmentPlaceholderRequestValidator.cs",
     "Alohi.Signplus/Validation/AnnotationTypeValidator.cs",
     "Alohi.Signplus/Validation/AnnotationSignatureValidator.cs",
     "Alohi.Signplus/Validation/AnnotationInitialsValidator.cs",
@@ -409,6 +428,9 @@
     "Alohi.Signplus/Models/AddEnvelopeDocumentRequest.cs",
     "Alohi.Signplus/Models/SetEnvelopeDynamicFieldsRequest.cs",
     "Alohi.Signplus/Models/AddEnvelopeSigningStepsRequest.cs",
+    "Alohi.Signplus/Models/SetEnvelopeAttachmentsSettingsRequest.cs",
+    "Alohi.Signplus/Models/EnvelopeAttachments.cs",
+    "Alohi.Signplus/Models/SetEnvelopeAttachmentsPlaceholdersRequest.cs",
     "Alohi.Signplus/Models/RenameEnvelopeRequest.cs",
     "Alohi.Signplus/Models/SetEnvelopeCommentRequest.cs",
     "Alohi.Signplus/Models/EnvelopeNotification.cs",
@@ -441,8 +463,13 @@
     "Alohi.Signplus/Models/RecipientVerification.cs",
     "Alohi.Signplus/Models/RecipientVerificationType.cs",
     "Alohi.Signplus/Models/Page.cs",
+    "Alohi.Signplus/Models/AttachmentSettings.cs",
+    "Alohi.Signplus/Models/AttachmentPlaceholdersPerRecipient.cs",
+    "Alohi.Signplus/Models/AttachmentPlaceholder.cs",
+    "Alohi.Signplus/Models/AttachmentPlaceholderFile.cs",
     "Alohi.Signplus/Models/EnvelopeOrderField.cs",
     "Alohi.Signplus/Models/DynamicField.cs",
+    "Alohi.Signplus/Models/AttachmentPlaceholderRequest.cs",
     "Alohi.Signplus/Models/AnnotationType.cs",
     "Alohi.Signplus/Models/AnnotationSignature.cs",
     "Alohi.Signplus/Models/AnnotationInitials.cs",

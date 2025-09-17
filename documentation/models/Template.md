@@ -17,3 +17,4 @@
 | Documents       | List<Document>            | ❌       |                                                                                                                                                                         |
 | Notification    | EnvelopeNotification      | ❌       |                                                                                                                                                                         |
 | DynamicFields   | List<string>              | ❌       | List of dynamic fields                                                                                                                                                  |
+| Attachments     | EnvelopeAttachments       | ❌       |                                                                                                                                                                         |

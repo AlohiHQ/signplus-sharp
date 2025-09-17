@@ -10,9 +10,9 @@ public class CreateWebhookRequestValidator : AbstractValidator<CreateWebhookRequ
     {
         RuleFor(CreateWebhookRequest => CreateWebhookRequest.Event_)
             .NotNull()
-            .WithMessage("Field event is required.");
+            .WithMessage("Field event is required and cannot be null.");
         RuleFor(CreateWebhookRequest => CreateWebhookRequest.Target)
             .NotNull()
-            .WithMessage("Field target is required.");
+            .WithMessage("Field target is required and cannot be null.");
     }
 }

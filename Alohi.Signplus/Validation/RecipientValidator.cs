@@ -8,8 +8,14 @@ public class RecipientValidator : AbstractValidator<Recipient?>
 {
     public RecipientValidator()
     {
-        RuleFor(Recipient => Recipient.Name).NotNull().WithMessage("Field name is required.");
-        RuleFor(Recipient => Recipient.Email).NotNull().WithMessage("Field email is required.");
-        RuleFor(Recipient => Recipient.Role).NotNull().WithMessage("Field role is required.");
+        RuleFor(Recipient => Recipient.Name)
+            .NotNull()
+            .WithMessage("Field name is required and cannot be null.");
+        RuleFor(Recipient => Recipient.Email)
+            .NotNull()
+            .WithMessage("Field email is required and cannot be null.");
+        RuleFor(Recipient => Recipient.Role)
+            .NotNull()
+            .WithMessage("Field role is required and cannot be null.");
     }
 }

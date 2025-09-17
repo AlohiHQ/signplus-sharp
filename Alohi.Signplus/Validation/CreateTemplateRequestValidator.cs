@@ -16,6 +16,6 @@ public class CreateTemplateRequestValidator : AbstractValidator<CreateTemplateRe
             .Matches(@"^[a-zA-Z0-9][a-zA-Z0-9 ]*[a-zA-Z0-9]$")
             .WithMessage(@"Pattern for name must match ^[a-zA-Z0-9][a-zA-Z0-9 ]*[a-zA-Z0-9]$.")
             .NotNull()
-            .WithMessage("Field name is required.");
+            .WithMessage("Field name is required and cannot be null.");
     }
 }

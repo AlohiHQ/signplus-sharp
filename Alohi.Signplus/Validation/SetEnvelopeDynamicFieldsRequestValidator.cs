@@ -11,6 +11,6 @@ public class SetEnvelopeDynamicFieldsRequestValidator
     {
         RuleFor(SetEnvelopeDynamicFieldsRequest => SetEnvelopeDynamicFieldsRequest.DynamicFields)
             .NotNull()
-            .WithMessage("Field dynamic_fields is required.");
+            .WithMessage("Field dynamic_fields is required and cannot be null.");
     }
 }
