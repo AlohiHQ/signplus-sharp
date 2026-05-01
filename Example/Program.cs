@@ -6,6 +6,6 @@ var config = new SignplusConfig { AccessToken = "YOUR_ACCESS_TOKEN" };
 
 var client = new SignplusClient(config);
 
-var response = await client.Signplus.GetEnvelopeAsync("envelope_id");
+var response = await client.EnvelopeId.DeleteEnvelopeAsync("envelope_id");
 
 Console.WriteLine(response);

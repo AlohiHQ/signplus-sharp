@@ -3,19 +3,19 @@ using System.Text.Json.Serialization;
 namespace Alohi.Signplus.Models;
 
 public record CreateEnvelopeFromTemplateRequest(
-    /// <value>Name of the envelope</value>
-    [property: JsonPropertyName("name")]
-        string Name,
-    /// <value>Comment for the envelope</value>
+    [property:
+        JsonPropertyName("name"),
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ]
+        Optional<string?> Name = default,
     [property:
         JsonPropertyName("comment"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Comment = null,
-    /// <value>Whether the envelope is created in sandbox mode</value>
+        Optional<string?> Comment = default,
     [property:
         JsonPropertyName("sandbox"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        bool? Sandbox = null
+        Optional<bool?> Sandbox = default
 );

@@ -17,4 +17,5 @@ public class Environment
     }
 
     public static Environment Default { get; } = new("https://restapi.sign.plus/v2/");
+    public static Environment Restapi { get; } = new("https://restapi.sign.plus/v2/");
 }

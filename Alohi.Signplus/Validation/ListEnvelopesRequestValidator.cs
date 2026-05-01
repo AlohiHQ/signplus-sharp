@@ -4,7 +4,12 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class ListEnvelopesRequestValidator : AbstractValidator<ListEnvelopesRequest?>
+/// <summary>
+/// FluentValidation validator for ListEnvelopesRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class ListEnvelopesRequestValidator : AbstractValidator<ListEnvelopesRequest>
 {
     public ListEnvelopesRequestValidator() { }
 }
