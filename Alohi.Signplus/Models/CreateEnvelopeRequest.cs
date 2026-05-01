@@ -3,28 +3,29 @@ using System.Text.Json.Serialization;
 namespace Alohi.Signplus.Models;
 
 public record CreateEnvelopeRequest(
-    /// <value>Name of the envelope</value>
-    [property: JsonPropertyName("name")]
-        string Name,
-    /// <value>Legal level of the envelope (SES is Simple Electronic Signature, QES_EIDAS is Qualified Electronic Signature, QES_ZERTES is Qualified Electronic Signature with Zertes)</value>
-    [property: JsonPropertyName("legality_level")]
-        EnvelopeLegalityLevel LegalityLevel,
-    /// <value>Unix timestamp of the expiration date</value>
+    [property:
+        JsonPropertyName("name"),
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ]
+        Optional<string?> Name = default,
+    [property:
+        JsonPropertyName("legality_level"),
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ]
+        Optional<string?> LegalityLevel = default,
     [property:
         JsonPropertyName("expires_at"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? ExpiresAt = null,
-    /// <value>Comment for the envelope</value>
+        Optional<double?> ExpiresAt = default,
     [property:
         JsonPropertyName("comment"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Comment = null,
-    /// <value>Whether the envelope is created in sandbox mode</value>
+        Optional<string?> Comment = default,
     [property:
         JsonPropertyName("sandbox"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        bool? Sandbox = null
+        Optional<bool?> Sandbox = default
 );

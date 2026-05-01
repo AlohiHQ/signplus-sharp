@@ -3,16 +3,14 @@ using System.Text.Json.Serialization;
 namespace Alohi.Signplus.Models;
 
 public record ListWebhooksRequest(
-    /// <value>ID of the webhook</value>
     [property:
         JsonPropertyName("webhook_id"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? WebhookId = null,
-    /// <value>Event of the webhook</value>
+        Optional<string?> WebhookId = default,
     [property:
         JsonPropertyName("event"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        WebhookEvent? Event_ = null
+        Optional<string?> Event_ = default
 );
