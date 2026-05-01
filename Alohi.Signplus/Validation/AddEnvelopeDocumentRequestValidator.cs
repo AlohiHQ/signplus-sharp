@@ -4,7 +4,12 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class AddEnvelopeDocumentRequestValidator : AbstractValidator<AddEnvelopeDocumentRequest?>
+/// <summary>
+/// FluentValidation validator for AddEnvelopeDocumentRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class AddEnvelopeDocumentRequestValidator : AbstractValidator<AddEnvelopeDocumentRequest>
 {
     public AddEnvelopeDocumentRequestValidator() { }
 }

@@ -3,102 +3,89 @@ using System.Text.Json.Serialization;
 namespace Alohi.Signplus.Models;
 
 public record ListEnvelopesRequest(
-    /// <value>Name of the envelope</value>
     [property:
         JsonPropertyName("name"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Name = null,
-    /// <value>List of tags</value>
+        Optional<string?> Name = default,
     [property:
         JsonPropertyName("tags"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<string>? Tags = null,
-    /// <value>Comment of the envelope</value>
+        Optional<List<string>?> Tags = default,
     [property:
         JsonPropertyName("comment"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Comment = null,
-    /// <value>List of envelope IDs</value>
+        Optional<string?> Comment = default,
     [property:
         JsonPropertyName("ids"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<string>? Ids = null,
-    /// <value>List of envelope statuses</value>
+        Optional<List<string>?> Ids = default,
     [property:
         JsonPropertyName("statuses"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<EnvelopeStatus>? Statuses = null,
-    /// <value>List of folder IDs</value>
+        Optional<List<string>?> Statuses = default,
     [property:
         JsonPropertyName("folder_ids"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<string>? FolderIds = null,
-    /// <value>Whether to only list envelopes in the root folder</value>
+        Optional<List<string>?> FolderIds = default,
     [property:
         JsonPropertyName("only_root_folder"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        bool? OnlyRootFolder = null,
-    /// <value>Unix timestamp of the start date</value>
+        Optional<bool?> OnlyRootFolder = default,
     [property:
         JsonPropertyName("date_from"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? DateFrom = null,
-    /// <value>Unix timestamp of the end date</value>
+        Optional<double?> DateFrom = default,
     [property:
         JsonPropertyName("date_to"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? DateTo = null,
-    /// <value>Unique identifier of the user</value>
+        Optional<double?> DateTo = default,
     [property:
         JsonPropertyName("uid"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Uid = null,
+        Optional<string?> Uid = default,
     [property:
         JsonPropertyName("first"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? First = null,
+        Optional<double?> First = default,
     [property:
         JsonPropertyName("last"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? Last = null,
+        Optional<double?> Last = default,
     [property:
         JsonPropertyName("after"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? After = null,
+        Optional<string?> After = default,
     [property:
         JsonPropertyName("before"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Before = null,
-    /// <value>Field to order envelopes by</value>
+        Optional<string?> Before = default,
     [property:
         JsonPropertyName("order_field"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        EnvelopeOrderField? OrderField = null,
-    /// <value>Whether to order envelopes in ascending order</value>
+        Optional<string?> OrderField = default,
     [property:
         JsonPropertyName("ascending"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        bool? Ascending = null,
-    /// <value>Whether to include envelopes in the trash</value>
+        Optional<bool?> Ascending = default,
     [property:
         JsonPropertyName("include_trash"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        bool? IncludeTrash = null
+        Optional<bool?> IncludeTrash = default
 );

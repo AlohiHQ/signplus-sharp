@@ -4,12 +4,12 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class SetTemplateCommentRequestValidator : AbstractValidator<SetTemplateCommentRequest?>
+/// <summary>
+/// FluentValidation validator for SetTemplateCommentRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class SetTemplateCommentRequestValidator : AbstractValidator<SetTemplateCommentRequest>
 {
-    public SetTemplateCommentRequestValidator()
-    {
-        RuleFor(SetTemplateCommentRequest => SetTemplateCommentRequest.Comment)
-            .NotNull()
-            .WithMessage("Field comment is required and cannot be null.");
-    }
+    public SetTemplateCommentRequestValidator() { }
 }

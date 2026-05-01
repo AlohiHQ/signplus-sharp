@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name         | Type              | Required | Description           |
-| :----------- | :---------------- | :------- | :-------------------- |
-| SigningSteps | List<SigningStep> | ❌       | List of signing steps |
+| Name         | Type                                                                                              | Required | Description |
+| :----------- | :------------------------------------------------------------------------------------------------ | :------- | :---------- |
+| SigningSteps | List<[AddEnvelopeSigningStepsRequestSigningSteps](AddEnvelopeSigningStepsRequestSigningSteps.md)> | ❌       |             |

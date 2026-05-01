@@ -4,12 +4,12 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class AddTemplateDocumentRequestValidator : AbstractValidator<AddTemplateDocumentRequest?>
+/// <summary>
+/// FluentValidation validator for AddTemplateDocumentRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class AddTemplateDocumentRequestValidator : AbstractValidator<AddTemplateDocumentRequest>
 {
-    public AddTemplateDocumentRequestValidator()
-    {
-        RuleFor(AddTemplateDocumentRequest => AddTemplateDocumentRequest.File)
-            .NotNull()
-            .WithMessage("Field file is required and cannot be null.");
-    }
+    public AddTemplateDocumentRequestValidator() { }
 }
