@@ -3,10 +3,9 @@ using System.Text.Json.Serialization;
 namespace Alohi.Signplus.Models;
 
 public record RenameEnvelopeRequest(
-    /// <value>Name of the envelope</value>
     [property:
         JsonPropertyName("name"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Name = null
+        Optional<string?> Name = default
 );

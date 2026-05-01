@@ -3,10 +3,9 @@ using System.Text.Json.Serialization;
 namespace Alohi.Signplus.Models;
 
 public record AddEnvelopeSigningStepsRequest(
-    /// <value>List of signing steps</value>
     [property:
         JsonPropertyName("signing_steps"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<SigningStep>? SigningSteps = null
+        Optional<List<AddEnvelopeSigningStepsRequestSigningSteps>?> SigningSteps = default
 );

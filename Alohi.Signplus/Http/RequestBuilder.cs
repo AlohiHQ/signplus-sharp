@@ -18,7 +18,10 @@ public class RequestBuilder
 
     private readonly Dictionary<string, string> _pathParameters = new();
     private readonly List<string> _queryParameters = new();
+    private readonly List<string> _cookieParameters = new();
     private readonly Dictionary<string, string> _headers = new();
+    private readonly List<ErrorMapping> _errorMappings = new();
+    private ErrorMapping? _defaultErrorMapping;
 
     private HttpContent? _content;
 
@@ -88,7 +91,13 @@ public class RequestBuilder
     /// </summary>
     public RequestBuilder SetHeader(string key, object? value, bool explode = false)
     {
-        var serializedValue = Serializer.Serialize(key, value, SerializationStyle.Simple, explode);
+        var serializedValue = Serializer.Serialize(
+            key,
+            value,
+            SerializationStyle.Simple,
+            explode,
+            false
+        );
         if (!string.IsNullOrEmpty(serializedValue))
         {
             _headers.Add(key, serializedValue);
@@ -104,6 +113,33 @@ public class RequestBuilder
         if (value is not null)
         {
             SetHeader(key, value, explode);
+        }
+        return this;
+    }
+
+    /// <summary>
+    /// Sets a cookie parameter. Multiple calls accumulate cookies combined into a single Cookie header.
+    /// Arrays with explode=true produce separate name=value pairs (e.g. "key=v1; key=v2").
+    /// Arrays with explode=false produce a comma-separated list (e.g. "key=v1,v2,v3").
+    /// </summary>
+    public RequestBuilder SetCookieParameter(string key, object? value, bool explode = true)
+    {
+        var serialized = Serializer.Serialize(key, value, SerializationStyle.Form, explode, false);
+        if (!string.IsNullOrEmpty(serialized))
+        {
+            _cookieParameters.AddRange(serialized.Split('&'));
+        }
+        return this;
+    }
+
+    /// <summary>
+    /// Sets a cookie parameter if the value is not null.
+    /// </summary>
+    public RequestBuilder SetOptionalCookieParameter(string key, object? value, bool explode = true)
+    {
+        if (value is not null)
+        {
+            SetCookieParameter(key, value, explode);
         }
         return this;
     }
@@ -197,9 +233,51 @@ public class RequestBuilder
     }
 
     /// <summary>
+    /// Adds a mapping between an HTTP status code/content type combination and the corresponding error model and exception type.
+    /// </summary>
+    /// <param name="statusCode">The HTTP status code to map (e.g., 400, 404, 500).</param>
+    /// <param name="contentType">The content type of the error response (e.g., "application/json").</param>
+    /// <param name="targetType">The type to deserialize the error response body into.</param>
+    /// <param name="exceptionType">The exception type to throw when this error occurs. Must extend Exception.</param>
+    public RequestBuilder AddError(
+        int statusCode,
+        string contentType,
+        Type targetType,
+        Type exceptionType
+    )
+    {
+        var errorMapping = new ErrorMapping
+        {
+            StatusCode = statusCode,
+            ContentType = contentType,
+            TargetType = targetType,
+            ExceptionType = exceptionType,
+        };
+
+        if (statusCode == Request.NoStatusCode)
+        {
+            _defaultErrorMapping = errorMapping;
+        }
+        else
+        {
+            _errorMappings.Add(errorMapping);
+        }
+
+        return this;
+    }
+
+    /// <summary>
+    ///  Sets the default error mapping to be thrown when no other error can be matched
+    /// </summary>
+    public RequestBuilder AddDefaultError(string contentType, Type targetType, Type exceptionType)
+    {
+        return AddError(Request.NoStatusCode, contentType, targetType, exceptionType);
+    }
+
+    /// <summary>
     /// Builds the <see cref="HttpRequestMessage"/> instance.
     /// </summary>
-    public HttpRequestMessage Build()
+    public HttpRequestMessage BuildHttpRequestMessage()
     {
         var requestMessage = new HttpRequestMessage(_httpMethod, BuildUrl()) { Content = _content };
 
@@ -208,6 +286,28 @@ public class RequestBuilder
             requestMessage.Headers.Add(key, value);
         }
 
+        if (_cookieParameters.Count > 0)
+        {
+            requestMessage.Headers.Add("Cookie", string.Join("; ", _cookieParameters));
+        }
+
         return requestMessage;
+    }
+
+    /// <summary>
+    /// Builds the <see cref="Request"/> object containing all request information.
+    /// </summary>
+    public Request Build()
+    {
+        return new Request
+        {
+            Url = BuildUrl(),
+            HttpMethod = _httpMethod,
+            Headers = new Dictionary<string, string>(_headers),
+            Content = _content,
+            ErrorMappings = new List<ErrorMapping>(_errorMappings),
+            DefaultErrorMapping = _defaultErrorMapping,
+            HttpRequestMessage = BuildHttpRequestMessage(),
+        };
     }
 }
