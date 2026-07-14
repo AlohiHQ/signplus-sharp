@@ -1,4 +1,5 @@
 using Alohi.Signplus.Config;
+using Alohi.Signplus.Http;
 using Alohi.Signplus.Http.Extensions;
 using Alohi.Signplus.Http.Handlers;
 using Alohi.Signplus.Services;
@@ -6,13 +7,21 @@ using Environment = Alohi.Signplus.Http.Environment;
 
 namespace Alohi.Signplus;
 
+/// <summary>
+/// The main SDK client that provides access to all service endpoints.
+/// Manages HTTP client lifecycle, authentication handlers, and service instances with centralized configuration.
+/// Implements IDisposable to properly clean up HTTP resources.
+/// </summary>
 public class SignplusClient : IDisposable
 {
-    private readonly HttpClient _httpClient;
+    private readonly Client _httpClient;
+
     private readonly TokenHandler _accessTokenHandler;
 
     public SignplusService Signplus { get; private set; }
 
+    /// <summary>Initializes a new instance of the SignplusClient client.</summary>
+    /// <param name="config">SDK configuration options.</param>
     public SignplusClient(SignplusConfig? config = null)
     {
         var retryHandler = new RetryHandler();
@@ -21,13 +30,10 @@ public class SignplusClient : IDisposable
             Header = "Authorization",
             Prefix = "Bearer",
             Token = config?.AccessToken,
+            OverrideTokenOptionsKey = "_RequestConfig_OverrideAccessToken",
         };
 
-        _httpClient = new HttpClient(_accessTokenHandler)
-        {
-            BaseAddress = config?.Environment?.Uri ?? Environment.Default.Uri,
-            DefaultRequestHeaders = { { "user-agent", "dotnet/7.0" } },
-        };
+        _httpClient = new Client(config, _accessTokenHandler);
 
         Signplus = new SignplusService(_httpClient);
     }
@@ -53,7 +59,7 @@ public class SignplusClient : IDisposable
     /// </summary>
     public void SetBaseUrl(Uri uri)
     {
-        _httpClient.BaseAddress = uri.EnsureTrailingSlash();
+        _httpClient.SetBaseAddress(uri.EnsureTrailingSlash());
     }
 
     /// <summary>
@@ -71,7 +77,7 @@ public class SignplusClient : IDisposable
             );
         }
 
-        _httpClient.Timeout = timeout;
+        _httpClient.SetTimeout(timeout);
     }
 
     /// <summary>

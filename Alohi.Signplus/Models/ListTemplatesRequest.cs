@@ -6,51 +6,46 @@ public record ListTemplatesRequest(
     /// <value>Name of the template</value>
     [property:
         JsonPropertyName("name"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Name = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Name = default,
     /// <value>List of tag templates</value>
     [property:
         JsonPropertyName("tags"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        List<string>? Tags = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<List<string>> Tags = default,
     /// <value>List of templates IDs</value>
     [property:
         JsonPropertyName("ids"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        List<string>? Ids = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<List<string>> Ids = default,
     [property:
         JsonPropertyName("first"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? First = null,
+        Optional<long> First = default,
     [property:
         JsonPropertyName("last"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        long? Last = null,
+        Optional<long> Last = default,
     [property:
         JsonPropertyName("after"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? After = null,
+        Optional<string> After = default,
     [property:
         JsonPropertyName("before"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        string? Before = null,
+        Optional<string> Before = default,
     /// <value>Field to order templates by</value>
     [property:
         JsonPropertyName("order_field"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        TemplateOrderField? OrderField = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<TemplateOrderField> OrderField = default,
     /// <value>Whether to order templates in ascending order</value>
     [property:
         JsonPropertyName("ascending"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        bool? Ascending = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<bool> Ascending = default
 );

@@ -2,7 +2,7 @@
 
 **Properties**
 
-| Name       | Type                                     | Required | Description |
-| :--------- | :--------------------------------------- | :------- | :---------- |
-| Settings   | AttachmentSettings                       | ❌       |             |
-| Recipients | List<AttachmentPlaceholdersPerRecipient> | ❌       |             |
+| Name       | Type                                                                              | Required | Description |
+| :--------- | :-------------------------------------------------------------------------------- | :------- | :---------- |
+| Settings   | [AttachmentSettings](AttachmentSettings.md)                                       | ❌       |             |
+| Recipients | List<[AttachmentPlaceholdersPerRecipient](AttachmentPlaceholdersPerRecipient.md)> | ❌       |             |

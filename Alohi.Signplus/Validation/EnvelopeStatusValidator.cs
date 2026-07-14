@@ -4,7 +4,13 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class EnvelopeStatusValidator : AbstractValidator<EnvelopeStatus?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.EnvelopeStatus model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class EnvelopeStatusValidator
+    : AbstractValidator<global::Alohi.Signplus.Models.EnvelopeStatus>
 {
     public EnvelopeStatusValidator() { }
 }

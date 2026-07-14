@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name         | Type                               | Required | Description |
-| :----------- | :--------------------------------- | :------- | :---------- |
-| Placeholders | List<AttachmentPlaceholderRequest> | ✅       |             |
+| Name         | Type                                                                  | Required | Description |
+| :----------- | :-------------------------------------------------------------------- | :------- | :---------- |
+| Placeholders | List<[AttachmentPlaceholderRequest](AttachmentPlaceholderRequest.md)> | ✅       |             |

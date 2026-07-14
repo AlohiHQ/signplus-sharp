@@ -77,11 +77,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, 8, "comment", false);
+var input = new CreateEnvelopeRequest("name", EnvelopeLegalityLevel.Ses, Optional<long>.Of(9), Optional<string>.Of("comment"), Optional<bool>.Of(true));
 
 var response = await client.Signplus.CreateEnvelopeAsync(input);
 
@@ -113,11 +115,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new CreateEnvelopeFromTemplateRequest("name", "comment", true);
+var input = new CreateEnvelopeFromTemplateRequest("name", Optional<string>.Of("comment"), Optional<bool>.Of(true));
 
 var response = await client.Signplus.CreateEnvelopeFromTemplateAsync(input, "template_id");
 
@@ -148,7 +152,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -156,7 +162,7 @@ var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
 var statuses = new List<EnvelopeStatus>() { EnvelopeStatus.Draft };
 var folderIds = new List<string>() { "folder_ids" };
-var input = new ListEnvelopesRequest("name", tags, "comment", ids, statuses, folderIds, true, 5, 9, "uid", 9, 7, "after", "before", EnvelopeOrderField.CreationDate, true, true);
+var input = new ListEnvelopesRequest(Optional<string>.Of("name"), Optional<List<string>>.Of(tags), Optional<string>.Of("comment"), Optional<List<string>>.Of(ids), Optional<List<EnvelopeStatus>>.Of(statuses), Optional<List<string>>.Of(folderIds), Optional<bool>.Of(false), Optional<long>.Of(0), Optional<long>.Of(0), Optional<string>.Of("uid"), Optional<long>.Of(6), Optional<long>.Of(8), Optional<string>.Of("after"), Optional<string>.Of("before"), Optional<EnvelopeOrderField>.Of(EnvelopeOrderField.CreationDate), Optional<bool>.Of(false), Optional<bool>.Of(true));
 
 var response = await client.Signplus.ListEnvelopesAsync(input);
 
@@ -186,7 +192,9 @@ Get envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -214,7 +222,9 @@ Delete envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -245,7 +255,9 @@ Download signed documents for an envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -277,7 +289,9 @@ Download certificate of completion for an envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -310,7 +324,9 @@ Get envelope document
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -342,7 +358,9 @@ Get envelope documents
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -376,11 +394,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new AddEnvelopeDocumentRequest(new byte[] {});
+var input = new AddEnvelopeDocumentRequest(Optional<byte[]>.Of(new byte[] {}));
 
 var response = await client.Signplus.AddEnvelopeDocumentAsync(input, "envelope_id");
 
@@ -412,11 +432,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var dynamicFieldsItem = new DynamicField("name", "value");
+var dynamicFieldsItem = new DynamicField(Optional<string>.Of("name"), Optional<string>.Of("value"));
 var dynamicFields = new List<DynamicField>() { dynamicFieldsItem };
 var input = new SetEnvelopeDynamicFieldsRequest(dynamicFields);
 
@@ -450,16 +472,18 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var verification = new RecipientVerification(RecipientVerificationType.Sms, "value");
-var recipientsItem = new Recipient("name", "email", RecipientRole.Signer, "id", "uid", verification);
+var verification = new RecipientVerification(Optional<RecipientVerificationType>.Of(RecipientVerificationType.Sms), Optional<string>.Of("value"));
+var recipientsItem = new Recipient("name", "email", RecipientRole.Signer, Optional<string>.Of("id"), Optional<string>.Of("uid"), Optional<RecipientVerification>.Of(verification));
 var recipients = new List<Recipient>() { recipientsItem };
-var signingStepsItem = new SigningStep(recipients);
+var signingStepsItem = new SigningStep(Optional<List<Recipient>>.Of(recipients));
 var signingSteps = new List<SigningStep>() { signingStepsItem };
-var input = new AddEnvelopeSigningStepsRequest(signingSteps);
+var input = new AddEnvelopeSigningStepsRequest(Optional<List<SigningStep>>.Of(signingSteps));
 
 var response = await client.Signplus.AddEnvelopeSigningStepsAsync(input, "envelope_id");
 
@@ -491,11 +515,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var settings = new AttachmentSettings(false);
+var settings = new AttachmentSettings(Optional<bool>.Of(false));
 var input = new SetEnvelopeAttachmentsSettingsRequest(settings);
 
 var response = await client.Signplus.SetEnvelopeAttachmentsSettingsAsync(input, "envelope_id");
@@ -528,11 +554,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var placeholdersItem = new AttachmentPlaceholderRequest("recipient_id", "name", false, true, "id", "hint");
+var placeholdersItem = new AttachmentPlaceholderRequest("recipient_id", "name", false, true, Optional<string>.Of("id"), Optional<string>.Of("hint"));
 var placeholders = new List<AttachmentPlaceholderRequest>() { placeholdersItem };
 var input = new SetEnvelopeAttachmentsPlaceholdersRequest(placeholders);
 
@@ -565,7 +593,9 @@ Get envelope attachment file
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -597,7 +627,9 @@ Send envelope for signature
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -629,7 +661,9 @@ Duplicate envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -661,7 +695,9 @@ Void envelope
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -695,11 +731,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new RenameEnvelopeRequest("name");
+var input = new RenameEnvelopeRequest(Optional<string>.Of("name"));
 
 var response = await client.Signplus.RenameEnvelopeAsync(input, "envelope_id");
 
@@ -731,7 +769,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -767,11 +807,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new EnvelopeNotification("subject", "message", 1);
+var input = new EnvelopeNotification(Optional<string>.Of("subject"), Optional<string>.Of("message"), Optional<long>.Of(6));
 
 var response = await client.Signplus.SetEnvelopeNotificationAsync(input, "envelope_id");
 
@@ -803,7 +845,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -839,11 +883,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new SetEnvelopeLegalityLevelRequest(EnvelopeLegalityLevel.Ses);
+var input = new SetEnvelopeLegalityLevelRequest(Optional<EnvelopeLegalityLevel>.Of(EnvelopeLegalityLevel.Ses));
 
 var response = await client.Signplus.SetEnvelopeLegalityLevelAsync(input, "envelope_id");
 
@@ -873,7 +919,9 @@ Get envelope annotations
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -906,7 +954,9 @@ Get envelope document annotations
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -940,18 +990,19 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var signature = new AnnotationSignature("id");
-var initials = new AnnotationInitials("id");
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var text = new AnnotationText(5.96, 8.73, "value", "tooltip", "dynamic_field_name", font);
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var datetime = new AnnotationDateTime(0.26, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
-var checkbox = new AnnotationCheckbox(true, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 2, 1.99, 8.2, 4.89, 9.43, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
+var signature = new AnnotationSignature(Optional<string>.Of("id"));
+var initials = new AnnotationInitials(Optional<string>.Of("id"));
+var font = new AnnotationFont(Optional<AnnotationFontFamily>.Of(AnnotationFontFamily.Unknown), Optional<bool>.Of(true), Optional<bool>.Of(true));
+var text = new AnnotationText(Optional<double>.Of(7.05), Optional<double>.Of(9.23), Optional<string>.Of("value"), Optional<string>.Of("tooltip"), Optional<string>.Of("dynamic_field_name"), Optional<AnnotationFont>.Of(font));
+var datetime = new AnnotationDateTime(Optional<double>.Of(8.11), Optional<AnnotationFont>.Of(font), Optional<string>.Of("color"), Optional<bool>.Of(true), Optional<string>.Of("timezone"), Optional<long>.Of(3), Optional<AnnotationDateTimeFormat>.Of(AnnotationDateTimeFormat.DmyNumericSlash));
+var checkbox = new AnnotationCheckbox(Optional<bool>.Of(true), Optional<AnnotationCheckboxStyle>.Of(AnnotationCheckboxStyle.CircleCheck));
+var input = new AddAnnotationRequest("document_id", 0, 9.02, 2.8, 6.67, 3.2, AnnotationType.Text, Optional<string>.Of("recipient_id"), Optional<bool>.Of(true), Optional<AnnotationSignature>.Of(signature), Optional<AnnotationInitials>.Of(initials), Optional<AnnotationText>.Of(text), Optional<AnnotationDateTime>.Of(datetime), Optional<AnnotationCheckbox>.Of(checkbox));
 
 var response = await client.Signplus.AddEnvelopeAnnotationAsync(input, "envelope_id");
 
@@ -978,7 +1029,9 @@ Delete envelope annotation
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1009,7 +1062,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1044,13 +1099,15 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
 var tags = new List<string>() { "tags" };
 var ids = new List<string>() { "ids" };
-var input = new ListTemplatesRequest("name", tags, ids, 1, 6, "after", "before", TemplateOrderField.TemplateId, false);
+var input = new ListTemplatesRequest(Optional<string>.Of("name"), Optional<List<string>>.Of(tags), Optional<List<string>>.Of(ids), Optional<long>.Of(3), Optional<long>.Of(6), Optional<string>.Of("after"), Optional<string>.Of("before"), Optional<TemplateOrderField>.Of(TemplateOrderField.TemplateId), Optional<bool>.Of(true));
 
 var response = await client.Signplus.ListTemplatesAsync(input);
 
@@ -1080,7 +1137,9 @@ Get template
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1108,7 +1167,9 @@ Delete template
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1138,7 +1199,9 @@ Duplicate template
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1172,7 +1235,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1207,7 +1272,9 @@ Get template document
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1239,7 +1306,9 @@ Get template documents
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1273,13 +1342,15 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var recipientsItem = new TemplateRecipient("id", "uid", "name", "email", TemplateRecipientRole.Signer);
+var recipientsItem = new TemplateRecipient(Optional<string>.Of("id"), Optional<string>.Of("uid"), Optional<string>.Of("name"), Optional<string>.Of("email"), Optional<TemplateRecipientRole>.Of(TemplateRecipientRole.Signer));
 var recipients = new List<TemplateRecipient>() { recipientsItem };
-var signingStepsItem = new TemplateSigningStep(recipients);
+var signingStepsItem = new TemplateSigningStep(Optional<List<TemplateRecipient>>.Of(recipients));
 var signingSteps = new List<TemplateSigningStep>() { signingStepsItem };
 var input = new AddTemplateSigningStepsRequest(signingSteps);
 
@@ -1313,7 +1384,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1349,7 +1422,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1385,11 +1460,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new EnvelopeNotification("subject", "message", 1);
+var input = new EnvelopeNotification(Optional<string>.Of("subject"), Optional<string>.Of("message"), Optional<long>.Of(6));
 
 var response = await client.Signplus.SetTemplateNotificationAsync(input, "template_id");
 
@@ -1419,7 +1496,9 @@ Get template annotations
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1452,7 +1531,9 @@ Get document template annotations
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1486,18 +1567,19 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var signature = new AnnotationSignature("id");
-var initials = new AnnotationInitials("id");
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var text = new AnnotationText(5.96, 8.73, "value", "tooltip", "dynamic_field_name", font);
-var font = new AnnotationFont(AnnotationFontFamily.Unknown, true, true);
-var datetime = new AnnotationDateTime(0.26, font, "color", true, "timezone", 1, AnnotationDateTimeFormat.DmyNumericSlash);
-var checkbox = new AnnotationCheckbox(true, AnnotationCheckboxStyle.CircleCheck);
-var input = new AddAnnotationRequest("document_id", 2, 1.99, 8.2, 4.89, 9.43, AnnotationType.Text, "recipient_id", false, signature, initials, text, datetime, checkbox);
+var signature = new AnnotationSignature(Optional<string>.Of("id"));
+var initials = new AnnotationInitials(Optional<string>.Of("id"));
+var font = new AnnotationFont(Optional<AnnotationFontFamily>.Of(AnnotationFontFamily.Unknown), Optional<bool>.Of(true), Optional<bool>.Of(true));
+var text = new AnnotationText(Optional<double>.Of(7.05), Optional<double>.Of(9.23), Optional<string>.Of("value"), Optional<string>.Of("tooltip"), Optional<string>.Of("dynamic_field_name"), Optional<AnnotationFont>.Of(font));
+var datetime = new AnnotationDateTime(Optional<double>.Of(8.11), Optional<AnnotationFont>.Of(font), Optional<string>.Of("color"), Optional<bool>.Of(true), Optional<string>.Of("timezone"), Optional<long>.Of(3), Optional<AnnotationDateTimeFormat>.Of(AnnotationDateTimeFormat.DmyNumericSlash));
+var checkbox = new AnnotationCheckbox(Optional<bool>.Of(true), Optional<AnnotationCheckboxStyle>.Of(AnnotationCheckboxStyle.CircleCheck));
+var input = new AddAnnotationRequest("document_id", 0, 9.02, 2.8, 6.67, 3.2, AnnotationType.Text, Optional<string>.Of("recipient_id"), Optional<bool>.Of(true), Optional<AnnotationSignature>.Of(signature), Optional<AnnotationInitials>.Of(initials), Optional<AnnotationText>.Of(text), Optional<AnnotationDateTime>.Of(datetime), Optional<AnnotationCheckbox>.Of(checkbox));
 
 var response = await client.Signplus.AddTemplateAnnotationAsync(input, "template_id");
 
@@ -1524,7 +1606,9 @@ Delete template annotation
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1556,11 +1640,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var settings = new AttachmentSettings(false);
+var settings = new AttachmentSettings(Optional<bool>.Of(false));
 var input = new SetEnvelopeAttachmentsSettingsRequest(settings);
 
 var response = await client.Signplus.SetTemplateAttachmentsSettingsAsync(input, "template_id");
@@ -1593,11 +1679,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var placeholdersItem = new AttachmentPlaceholderRequest("recipient_id", "name", false, true, "id", "hint");
+var placeholdersItem = new AttachmentPlaceholderRequest("recipient_id", "name", false, true, Optional<string>.Of("id"), Optional<string>.Of("hint"));
 var placeholders = new List<AttachmentPlaceholderRequest>() { placeholdersItem };
 var input = new SetEnvelopeAttachmentsPlaceholdersRequest(placeholders);
 
@@ -1630,7 +1718,9 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
@@ -1665,11 +1755,13 @@ using Alohi.Signplus;
 using Alohi.Signplus.Config;
 using Alohi.Signplus.Models;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 
-var input = new ListWebhooksRequest("webhook_id", WebhookEvent.EnvelopeExpired);
+var input = new ListWebhooksRequest(Optional<string>.Of("webhook_id"), Optional<WebhookEvent>.Of(WebhookEvent.EnvelopeExpired));
 
 var response = await client.Signplus.ListWebhooksAsync(input);
 
@@ -1695,7 +1787,9 @@ Delete webhook
 using Alohi.Signplus;
 using Alohi.Signplus.Config;
 
-var config = new SignplusConfig{};
+var config = new SignplusConfig{
+    AccessToken = "YOUR_ACCESS_TOKEN"
+};
 
 var client = new SignplusClient(config);
 

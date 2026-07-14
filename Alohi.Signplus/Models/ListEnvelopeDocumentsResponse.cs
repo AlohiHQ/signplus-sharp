@@ -5,7 +5,7 @@ namespace Alohi.Signplus.Models;
 public record ListEnvelopeDocumentsResponse(
     [property:
         JsonPropertyName("documents"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<Document>? Documents = null
+        Optional<List<Document>> Documents = default
 );

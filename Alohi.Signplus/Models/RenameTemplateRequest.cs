@@ -4,6 +4,5 @@ namespace Alohi.Signplus.Models;
 
 public record RenameTemplateRequest(
     /// <value>Name of the template</value>
-    [property: JsonPropertyName("name")]
-        string Name
+    [property: JsonPropertyName("name")] string Name
 );

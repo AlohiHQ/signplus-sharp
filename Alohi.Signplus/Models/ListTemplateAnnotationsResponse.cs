@@ -5,7 +5,7 @@ namespace Alohi.Signplus.Models;
 public record ListTemplateAnnotationsResponse(
     [property:
         JsonPropertyName("annotations"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<Annotation>? Annotations = null
+        Optional<List<Annotation>> Annotations = default
 );

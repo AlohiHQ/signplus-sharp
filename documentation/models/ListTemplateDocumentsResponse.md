@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name      | Type           | Required | Description |
-| :-------- | :------------- | :------- | :---------- |
-| Documents | List<Document> | ❌       |             |
+| Name      | Type                          | Required | Description |
+| :-------- | :---------------------------- | :------- | :---------- |
+| Documents | List<[Document](Document.md)> | ❌       |             |

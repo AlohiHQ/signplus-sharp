@@ -4,26 +4,24 @@ namespace Alohi.Signplus.Models;
 
 public record Recipient(
     /// <value>Name of the recipient</value>
-    [property: JsonPropertyName("name")]
-        string Name,
+    [property: JsonPropertyName("name")] string Name,
     /// <value>Email of the recipient</value>
-    [property: JsonPropertyName("email")]
-        string Email,
+    [property: JsonPropertyName("email")] string Email,
     /// <value>Role of the recipient (SIGNER signs the document, RECEIVES_COPY receives a copy of the document, IN_PERSON_SIGNER signs the document in person, SENDER sends the document)</value>
-    [property: JsonPropertyName("role")]
-        RecipientRole Role,
+    [property: JsonPropertyName("role")] RecipientRole Role,
     /// <value>Unique identifier of the recipient</value>
-    [property: JsonPropertyName("id"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        string? Id = null,
+    [property:
+        JsonPropertyName("id"),
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Id = default,
     /// <value>Unique identifier of the user associated with the recipient</value>
     [property:
         JsonPropertyName("uid"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Uid = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Uid = default,
     [property:
         JsonPropertyName("verification"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        RecipientVerification? Verification = null
+        Optional<RecipientVerification> Verification = default
 );

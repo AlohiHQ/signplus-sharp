@@ -2,20 +2,34 @@ using System.Text.Json.Serialization;
 
 namespace Alohi.Signplus.Models;
 
-public record CreateEnvelopeFromTemplateRequest(
+public class CreateEnvelopeFromTemplateRequest
+{
     /// <value>Name of the envelope</value>
-    [property: JsonPropertyName("name")]
-        string Name,
+    [JsonPropertyName("name")]
+    public string Name { get; init; }
+
     /// <value>Comment for the envelope</value>
-    [property:
-        JsonPropertyName("comment"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Comment = null,
+    [JsonPropertyName("comment"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public Optional<string> Comment { get; init; }
+
     /// <value>Whether the envelope is created in sandbox mode</value>
-    [property:
-        JsonPropertyName("sandbox"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        bool? Sandbox = null
-);
+    [JsonPropertyName("sandbox"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public Optional<bool> Sandbox { get; init; }
+
+    // Constructor with defaults applied
+    public CreateEnvelopeFromTemplateRequest(
+        string name,
+        Optional<string> comment = default,
+        Optional<bool> sandbox = default
+    )
+    {
+        Name = name;
+        Comment = comment;
+        Sandbox = sandbox.IsProvided ? sandbox : Optional<bool>.Of(false);
+    }
+
+    public override string ToString()
+    {
+        return $"{nameof(CreateEnvelopeFromTemplateRequest)} {{Name = {Name}, Comment = {Comment}, Sandbox = {Sandbox}}}";
+    }
+}

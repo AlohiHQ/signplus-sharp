@@ -4,7 +4,18 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class AnnotationInitialsValidator : AbstractValidator<AnnotationInitials?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.AnnotationInitials model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class AnnotationInitialsValidator
+    : AbstractValidator<global::Alohi.Signplus.Models.AnnotationInitials>
 {
-    public AnnotationInitialsValidator() { }
+    public AnnotationInitialsValidator()
+    {
+        RuleFor(AnnotationInitials => AnnotationInitials.Id)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Id cannot be null when provided.");
+    }
 }

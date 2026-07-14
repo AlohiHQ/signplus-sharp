@@ -6,18 +6,16 @@ public record ListEnvelopesResponse(
     /// <value>Whether there is a next page</value>
     [property:
         JsonPropertyName("has_next_page"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        bool? HasNextPage = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<bool> HasNextPage = default,
     /// <value>Whether there is a previous page</value>
     [property:
         JsonPropertyName("has_previous_page"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        bool? HasPreviousPage = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<bool> HasPreviousPage = default,
     [property:
         JsonPropertyName("envelopes"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<Envelope>? Envelopes = null
+        Optional<List<Envelope>> Envelopes = default
 );

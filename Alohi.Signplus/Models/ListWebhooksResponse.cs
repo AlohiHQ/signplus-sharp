@@ -5,7 +5,7 @@ namespace Alohi.Signplus.Models;
 public record ListWebhooksResponse(
     [property:
         JsonPropertyName("webhooks"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<Webhook>? Webhooks = null
+        Optional<List<Webhook>> Webhooks = default
 );

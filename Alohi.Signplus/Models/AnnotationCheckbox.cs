@@ -7,13 +7,11 @@ public record AnnotationCheckbox(
     /// <value>Whether the checkbox is checked</value>
     [property:
         JsonPropertyName("checked"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        bool? Checked_ = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<bool> Checked_ = default,
     /// <value>Style of the checkbox</value>
     [property:
         JsonPropertyName("style"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        AnnotationCheckboxStyle? Style = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<AnnotationCheckboxStyle> Style = default
 );

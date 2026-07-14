@@ -5,12 +5,12 @@ namespace Alohi.Signplus.Models;
 public record EnvelopeAttachments(
     [property:
         JsonPropertyName("settings"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        AttachmentSettings? Settings = null,
+        Optional<AttachmentSettings> Settings = default,
     [property:
         JsonPropertyName("recipients"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<AttachmentPlaceholdersPerRecipient>? Recipients = null
+        Optional<List<AttachmentPlaceholdersPerRecipient>> Recipients = default
 );

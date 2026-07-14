@@ -6,7 +6,6 @@ public record AddEnvelopeSigningStepsRequest(
     /// <value>List of signing steps</value>
     [property:
         JsonPropertyName("signing_steps"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        List<SigningStep>? SigningSteps = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<List<SigningStep>> SigningSteps = default
 );
