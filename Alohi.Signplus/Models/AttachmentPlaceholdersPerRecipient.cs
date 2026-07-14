@@ -6,18 +6,16 @@ public record AttachmentPlaceholdersPerRecipient(
     /// <value>ID of the recipient</value>
     [property:
         JsonPropertyName("recipient_id"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? RecipientId = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> RecipientId = default,
     /// <value>Name of the recipient</value>
     [property:
         JsonPropertyName("recipient_name"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? RecipientName = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> RecipientName = default,
     [property:
         JsonPropertyName("placeholders"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
     ]
-        List<AttachmentPlaceholder>? Placeholders = null
+        Optional<List<AttachmentPlaceholder>> Placeholders = default
 );

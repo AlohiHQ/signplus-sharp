@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Net;
 using System.Text.Json.Serialization;
 
 namespace Alohi.Signplus.Http.Serialization;
@@ -15,7 +14,8 @@ public static class Serializer
         string key,
         T value,
         SerializationStyle style,
-        bool explode = true
+        bool explode = true,
+        bool shouldUrlEncode = true
     )
     {
         return value switch
@@ -23,19 +23,20 @@ public static class Serializer
             null or string or bool or int or long or double => SerializePrimitive(
                 key,
                 value,
-                style
+                style,
+                shouldUrlEncode
             ),
-            IEnumerable e => SerializeEnumerable(key, e, style, explode),
-            object o => SerializeObject(key, o, style, explode),
+            IEnumerable e => SerializeEnumerable(key, e, style, explode, shouldUrlEncode),
+            object o => SerializeObject(key, o, style, explode, shouldUrlEncode),
         };
     }
 
-    private static string SerializeValue(object? value)
+    private static string SerializeValue(object? value, bool shouldUrlEncode = true)
     {
         return value switch
             {
                 null => "null",
-                string s => WebUtility.UrlEncode(s),
+                string s => shouldUrlEncode ? Uri.EscapeDataString(s) : s,
                 bool b => b.ToString().ToLowerInvariant(),
                 int or long or double => value.ToString(),
                 IEnumerable e => SerializeEnumerable(
@@ -48,14 +49,19 @@ public static class Serializer
             } ?? string.Empty;
     }
 
-    private static string SerializePrimitive(string key, object? value, SerializationStyle style)
+    private static string SerializePrimitive(
+        string key,
+        object? value,
+        SerializationStyle style,
+        bool shouldUrlEncode = true
+    )
     {
         return style switch
         {
-            SerializationStyle.Label => $".{SerializeValue(value)}",
-            SerializationStyle.Matrix => $";{SerializeValue(value)}",
-            SerializationStyle.Form => $"{key}={SerializeValue(value)}",
-            _ => SerializeValue(value),
+            SerializationStyle.Label => $".{SerializeValue(value, shouldUrlEncode)}",
+            SerializationStyle.Matrix => $";{SerializeValue(value, shouldUrlEncode)}",
+            SerializationStyle.Form => $"{key}={SerializeValue(value, shouldUrlEncode)}",
+            _ => SerializeValue(value, shouldUrlEncode),
         };
     }
 
@@ -63,11 +69,12 @@ public static class Serializer
         string key,
         IEnumerable enumerable,
         SerializationStyle style,
-        bool explode
+        bool explode,
+        bool shouldUrlEncode = true
     )
     {
         var array = enumerable as object[] ?? enumerable.Cast<object>().ToArray();
-        var serializedValues = array.Select(SerializeValue);
+        var serializedValues = array.Select((object o) => SerializeValue(o, shouldUrlEncode));
 
         switch (style)
         {
@@ -103,7 +110,8 @@ public static class Serializer
         string key,
         T o,
         SerializationStyle style,
-        bool explode
+        bool explode,
+        bool shouldUrlEncode = true
     )
         where T : class
     {
@@ -119,6 +127,31 @@ public static class Serializer
                     : p.Name;
                 var value = p.GetValue(o);
 
+                // Handle Optional<T> fields - only include if they have a value
+                if (
+                    value != null
+                    && value.GetType().IsGenericType
+                    && value.GetType().GetGenericTypeDefinition().Name == "Optional`1"
+                )
+                {
+                    var isProvidedProperty = value.GetType().GetProperty("IsProvided");
+                    if (isProvidedProperty != null)
+                    {
+                        var isProvided = (bool)isProvidedProperty.GetValue(value);
+                        if (!isProvided)
+                        {
+                            return (name, value: null); // This will be filtered out by Where clause
+                        }
+
+                        // Get the actual value from Optional<T>
+                        var valueProperty = value.GetType().GetProperty("Value");
+                        if (valueProperty != null)
+                        {
+                            value = valueProperty.GetValue(value);
+                        }
+                    }
+                }
+
                 return (name, value);
             })
             .Where(p => p.value != null);
@@ -129,40 +162,54 @@ public static class Serializer
                 return string.Join(
                     ",",
                     explode
-                        ? properties.Select(p => $"{p.name}={SerializeValue(p.value)}")
-                        : properties.Select(p => $"{p.name},{SerializeValue(p.value)}")
+                        ? properties.Select(p =>
+                            $"{p.name}={SerializeValue(p.value, shouldUrlEncode)}"
+                        )
+                        : properties.Select(p =>
+                            $"{p.name},{SerializeValue(p.value, shouldUrlEncode)}"
+                        )
                 );
             case SerializationStyle.Label:
                 return explode
                     ? string.Join(
                         ".",
-                        properties.Select(p => $"{p.name}={SerializeValue(p.value)}")
+                        properties.Select(p =>
+                            $"{p.name}={SerializeValue(p.value, shouldUrlEncode)}"
+                        )
                     )
                     : $"."
                         + string.Join(
                             ",",
-                            properties.Select(p => $"{p.name}={SerializeValue(p.value)}")
+                            properties.Select(p =>
+                                $"{p.name}={SerializeValue(p.value, shouldUrlEncode)}"
+                            )
                         );
             case SerializationStyle.Matrix:
                 return explode
                     ? string.Join(
                         $";",
-                        properties.Select(p => $"{p.name}={SerializeValue(p.value)}")
+                        properties.Select(p =>
+                            $"{p.name}={SerializeValue(p.value, shouldUrlEncode)}"
+                        )
                     )
-                    : $";{string.Join(",", properties.Select(p => $"{p.name}={SerializeValue(p.value)}"))}";
+                    : $";{string.Join(",", properties.Select(p => $"{p.name}={SerializeValue(p.value, shouldUrlEncode)}"))}";
             case SerializationStyle.DeepObject:
                 return string.Join(
                     "&",
-                    properties.Select(p => $"{key}[{p.name}]={SerializeValue(p.value)}")
+                    properties.Select(p =>
+                        $"{key}[{p.name}]={SerializeValue(p.value, shouldUrlEncode)}"
+                    )
                 );
             default:
                 // Form style
                 return explode
                     ? string.Join(
                         "&",
-                        properties.Select(p => $"{p.name}={SerializeValue(p.value)}")
+                        properties.Select(p =>
+                            $"{p.name}={SerializeValue(p.value, shouldUrlEncode)}"
+                        )
                     )
-                    : $"{key}={string.Join(",", properties.Select((p) => $"{p.name},{SerializeValue(p.value)}"))}";
+                    : $"{key}={string.Join(",", properties.Select((p) => $"{p.name},{SerializeValue(p.value, shouldUrlEncode)}"))}";
         }
     }
 }

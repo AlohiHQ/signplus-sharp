@@ -6,7 +6,6 @@ public record TemplateSigningStep(
     /// <value>List of recipients</value>
     [property:
         JsonPropertyName("recipients"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        List<TemplateRecipient>? Recipients = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<List<TemplateRecipient>> Recipients = default
 );

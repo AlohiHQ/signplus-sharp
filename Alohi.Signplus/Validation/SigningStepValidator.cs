@@ -4,7 +4,17 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class SigningStepValidator : AbstractValidator<SigningStep?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.SigningStep model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class SigningStepValidator : AbstractValidator<global::Alohi.Signplus.Models.SigningStep>
 {
-    public SigningStepValidator() { }
+    public SigningStepValidator()
+    {
+        RuleFor(SigningStep => SigningStep.Recipients)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Recipients cannot be null when provided.");
+    }
 }

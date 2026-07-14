@@ -4,7 +4,13 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class EnvelopeOrderFieldValidator : AbstractValidator<EnvelopeOrderField?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.EnvelopeOrderField model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class EnvelopeOrderFieldValidator
+    : AbstractValidator<global::Alohi.Signplus.Models.EnvelopeOrderField>
 {
     public EnvelopeOrderFieldValidator() { }
 }

@@ -4,7 +4,13 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class CreateEnvelopeRequestValidator : AbstractValidator<CreateEnvelopeRequest?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.CreateEnvelopeRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class CreateEnvelopeRequestValidator
+    : AbstractValidator<global::Alohi.Signplus.Models.CreateEnvelopeRequest>
 {
     public CreateEnvelopeRequestValidator()
     {
@@ -20,5 +26,14 @@ public class CreateEnvelopeRequestValidator : AbstractValidator<CreateEnvelopeRe
         RuleFor(CreateEnvelopeRequest => CreateEnvelopeRequest.LegalityLevel)
             .NotNull()
             .WithMessage("Field legality_level is required and cannot be null.");
+        RuleFor(CreateEnvelopeRequest => CreateEnvelopeRequest.ExpiresAt)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field ExpiresAt cannot be null when provided.");
+        RuleFor(CreateEnvelopeRequest => CreateEnvelopeRequest.Comment)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Comment cannot be null when provided.");
+        RuleFor(CreateEnvelopeRequest => CreateEnvelopeRequest.Sandbox)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Sandbox cannot be null when provided.");
     }
 }

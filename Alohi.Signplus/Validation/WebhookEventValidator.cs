@@ -4,7 +4,12 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class WebhookEventValidator : AbstractValidator<WebhookEvent?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.WebhookEvent model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class WebhookEventValidator : AbstractValidator<global::Alohi.Signplus.Models.WebhookEvent>
 {
     public WebhookEventValidator() { }
 }

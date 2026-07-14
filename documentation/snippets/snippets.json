@@ -1,0 +1,282 @@
+{
+  "endpoints": {
+    "/envelope": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new CreateEnvelopeRequest(\"name\", EnvelopeLegalityLevel.Ses, Optional<long>.Of(9), Optional<string>.Of(\"comment\"), Optional<bool>.Of(true));\n\nvar response = await client.Signplus.CreateEnvelopeAsync(input);\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/from_template/{template_id}": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new CreateEnvelopeFromTemplateRequest(\"name\", Optional<string>.Of(\"comment\"), Optional<bool>.Of(true));\n\nvar response = await client.Signplus.CreateEnvelopeFromTemplateAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelopes": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar tags = new List<string>() { \"tags\" };\nvar ids = new List<string>() { \"ids\" };\nvar statuses = new List<EnvelopeStatus>() { EnvelopeStatus.Draft };\nvar folderIds = new List<string>() { \"folder_ids\" };\nvar input = new ListEnvelopesRequest(Optional<string>.Of(\"name\"), Optional<List<string>>.Of(tags), Optional<string>.Of(\"comment\"), Optional<List<string>>.Of(ids), Optional<List<EnvelopeStatus>>.Of(statuses), Optional<List<string>>.Of(folderIds), Optional<bool>.Of(false), Optional<long>.Of(0), Optional<long>.Of(0), Optional<string>.Of(\"uid\"), Optional<long>.Of(6), Optional<long>.Of(8), Optional<string>.Of(\"after\"), Optional<string>.Of(\"before\"), Optional<EnvelopeOrderField>.Of(EnvelopeOrderField.CreationDate), Optional<bool>.Of(false), Optional<bool>.Of(true));\n\nvar response = await client.Signplus.ListEnvelopesAsync(input);\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetEnvelopeAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n",
+      "delete": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nawait client.Signplus.DeleteEnvelopeAsync(\"envelope_id\");\n\n"
+    },
+    "/envelope/{envelope_id}/signed_documents": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.DownloadEnvelopeSignedDocumentsAsync(\"envelope_id\", true);\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/certificate": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.DownloadEnvelopeCertificateAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/document/{document_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetEnvelopeDocumentAsync(\"envelope_id\", \"document_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/documents": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetEnvelopeDocumentsAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/document": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new AddEnvelopeDocumentRequest(Optional<byte[]>.Of(new byte[] {}));\n\nvar response = await client.Signplus.AddEnvelopeDocumentAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/dynamic_fields": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar dynamicFieldsItem = new DynamicField(Optional<string>.Of(\"name\"), Optional<string>.Of(\"value\"));\nvar dynamicFields = new List<DynamicField>() { dynamicFieldsItem };\nvar input = new SetEnvelopeDynamicFieldsRequest(dynamicFields);\n\nvar response = await client.Signplus.SetEnvelopeDynamicFieldsAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/signing_steps": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar verification = new RecipientVerification(Optional<RecipientVerificationType>.Of(RecipientVerificationType.Sms), Optional<string>.Of(\"value\"));\nvar recipientsItem = new Recipient(\"name\", \"email\", RecipientRole.Signer, Optional<string>.Of(\"id\"), Optional<string>.Of(\"uid\"), Optional<RecipientVerification>.Of(verification));\nvar recipients = new List<Recipient>() { recipientsItem };\nvar signingStepsItem = new SigningStep(Optional<List<Recipient>>.Of(recipients));\nvar signingSteps = new List<SigningStep>() { signingStepsItem };\nvar input = new AddEnvelopeSigningStepsRequest(Optional<List<SigningStep>>.Of(signingSteps));\n\nvar response = await client.Signplus.AddEnvelopeSigningStepsAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/attachments/settings": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar settings = new AttachmentSettings(Optional<bool>.Of(false));\nvar input = new SetEnvelopeAttachmentsSettingsRequest(settings);\n\nvar response = await client.Signplus.SetEnvelopeAttachmentsSettingsAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/attachments/placeholders": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar placeholdersItem = new AttachmentPlaceholderRequest(\"recipient_id\", \"name\", false, true, Optional<string>.Of(\"id\"), Optional<string>.Of(\"hint\"));\nvar placeholders = new List<AttachmentPlaceholderRequest>() { placeholdersItem };\nvar input = new SetEnvelopeAttachmentsPlaceholdersRequest(placeholders);\n\nvar response = await client.Signplus.SetEnvelopeAttachmentsPlaceholdersAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/attachments/{file_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetAttachmentFileAsync(\"envelope_id\", \"file_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/send": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.SendEnvelopeAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/duplicate": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.DuplicateEnvelopeAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/void": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.VoidEnvelopeAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/rename": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new RenameEnvelopeRequest(Optional<string>.Of(\"name\"));\n\nvar response = await client.Signplus.RenameEnvelopeAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/set_comment": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new SetEnvelopeCommentRequest(\"comment\");\n\nvar response = await client.Signplus.SetEnvelopeCommentAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/set_notification": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new EnvelopeNotification(Optional<string>.Of(\"subject\"), Optional<string>.Of(\"message\"), Optional<long>.Of(6));\n\nvar response = await client.Signplus.SetEnvelopeNotificationAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/set_expiration_date": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new SetEnvelopeExpirationRequest(0);\n\nvar response = await client.Signplus.SetEnvelopeExpirationDateAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/set_legality_level": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new SetEnvelopeLegalityLevelRequest(Optional<EnvelopeLegalityLevel>.Of(EnvelopeLegalityLevel.Ses));\n\nvar response = await client.Signplus.SetEnvelopeLegalityLevelAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/annotations": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetEnvelopeAnnotationsAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/annotations/{document_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetEnvelopeDocumentAnnotationsAsync(\"envelope_id\", \"document_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/annotation": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar signature = new AnnotationSignature(Optional<string>.Of(\"id\"));\nvar initials = new AnnotationInitials(Optional<string>.Of(\"id\"));\nvar font = new AnnotationFont(Optional<AnnotationFontFamily>.Of(AnnotationFontFamily.Unknown), Optional<bool>.Of(true), Optional<bool>.Of(true));\nvar text = new AnnotationText(Optional<double>.Of(7.05), Optional<double>.Of(9.23), Optional<string>.Of(\"value\"), Optional<string>.Of(\"tooltip\"), Optional<string>.Of(\"dynamic_field_name\"), Optional<AnnotationFont>.Of(font));\nvar datetime = new AnnotationDateTime(Optional<double>.Of(8.11), Optional<AnnotationFont>.Of(font), Optional<string>.Of(\"color\"), Optional<bool>.Of(true), Optional<string>.Of(\"timezone\"), Optional<long>.Of(3), Optional<AnnotationDateTimeFormat>.Of(AnnotationDateTimeFormat.DmyNumericSlash));\nvar checkbox = new AnnotationCheckbox(Optional<bool>.Of(true), Optional<AnnotationCheckboxStyle>.Of(AnnotationCheckboxStyle.CircleCheck));\nvar input = new AddAnnotationRequest(\"document_id\", 0, 9.02, 2.8, 6.67, 3.2, AnnotationType.Text, Optional<string>.Of(\"recipient_id\"), Optional<bool>.Of(true), Optional<AnnotationSignature>.Of(signature), Optional<AnnotationInitials>.Of(initials), Optional<AnnotationText>.Of(text), Optional<AnnotationDateTime>.Of(datetime), Optional<AnnotationCheckbox>.Of(checkbox));\n\nvar response = await client.Signplus.AddEnvelopeAnnotationAsync(input, \"envelope_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/envelope/{envelope_id}/annotation/{annotation_id}": {
+      "delete": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nawait client.Signplus.DeleteEnvelopeAnnotationAsync(\"envelope_id\", \"annotation_id\");\n\n"
+    },
+    "/template": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new CreateTemplateRequest(\"name\");\n\nvar response = await client.Signplus.CreateTemplateAsync(input);\n\nConsole.WriteLine(response);\n"
+    },
+    "/templates": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar tags = new List<string>() { \"tags\" };\nvar ids = new List<string>() { \"ids\" };\nvar input = new ListTemplatesRequest(Optional<string>.Of(\"name\"), Optional<List<string>>.Of(tags), Optional<List<string>>.Of(ids), Optional<long>.Of(3), Optional<long>.Of(6), Optional<string>.Of(\"after\"), Optional<string>.Of(\"before\"), Optional<TemplateOrderField>.Of(TemplateOrderField.TemplateId), Optional<bool>.Of(true));\n\nvar response = await client.Signplus.ListTemplatesAsync(input);\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetTemplateAsync(\"template_id\");\n\nConsole.WriteLine(response);\n",
+      "delete": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nawait client.Signplus.DeleteTemplateAsync(\"template_id\");\n\n"
+    },
+    "/template/{template_id}/duplicate": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.DuplicateTemplateAsync(\"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/document": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new AddTemplateDocumentRequest(new byte[] {});\n\nvar response = await client.Signplus.AddTemplateDocumentAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/document/{document_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetTemplateDocumentAsync(\"template_id\", \"document_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/documents": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetTemplateDocumentsAsync(\"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/signing_steps": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar recipientsItem = new TemplateRecipient(Optional<string>.Of(\"id\"), Optional<string>.Of(\"uid\"), Optional<string>.Of(\"name\"), Optional<string>.Of(\"email\"), Optional<TemplateRecipientRole>.Of(TemplateRecipientRole.Signer));\nvar recipients = new List<TemplateRecipient>() { recipientsItem };\nvar signingStepsItem = new TemplateSigningStep(Optional<List<TemplateRecipient>>.Of(recipients));\nvar signingSteps = new List<TemplateSigningStep>() { signingStepsItem };\nvar input = new AddTemplateSigningStepsRequest(signingSteps);\n\nvar response = await client.Signplus.AddTemplateSigningStepsAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/rename": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new RenameTemplateRequest(\"name\");\n\nvar response = await client.Signplus.RenameTemplateAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/set_comment": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new SetTemplateCommentRequest(\"comment\");\n\nvar response = await client.Signplus.SetTemplateCommentAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/set_notification": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new EnvelopeNotification(Optional<string>.Of(\"subject\"), Optional<string>.Of(\"message\"), Optional<long>.Of(6));\n\nvar response = await client.Signplus.SetTemplateNotificationAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/annotations": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetTemplateAnnotationsAsync(\"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/annotations/{document_id}": {
+      "get": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetDocumentTemplateAnnotationsAsync(\"template_id\", \"document_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/annotation": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar signature = new AnnotationSignature(Optional<string>.Of(\"id\"));\nvar initials = new AnnotationInitials(Optional<string>.Of(\"id\"));\nvar font = new AnnotationFont(Optional<AnnotationFontFamily>.Of(AnnotationFontFamily.Unknown), Optional<bool>.Of(true), Optional<bool>.Of(true));\nvar text = new AnnotationText(Optional<double>.Of(7.05), Optional<double>.Of(9.23), Optional<string>.Of(\"value\"), Optional<string>.Of(\"tooltip\"), Optional<string>.Of(\"dynamic_field_name\"), Optional<AnnotationFont>.Of(font));\nvar datetime = new AnnotationDateTime(Optional<double>.Of(8.11), Optional<AnnotationFont>.Of(font), Optional<string>.Of(\"color\"), Optional<bool>.Of(true), Optional<string>.Of(\"timezone\"), Optional<long>.Of(3), Optional<AnnotationDateTimeFormat>.Of(AnnotationDateTimeFormat.DmyNumericSlash));\nvar checkbox = new AnnotationCheckbox(Optional<bool>.Of(true), Optional<AnnotationCheckboxStyle>.Of(AnnotationCheckboxStyle.CircleCheck));\nvar input = new AddAnnotationRequest(\"document_id\", 0, 9.02, 2.8, 6.67, 3.2, AnnotationType.Text, Optional<string>.Of(\"recipient_id\"), Optional<bool>.Of(true), Optional<AnnotationSignature>.Of(signature), Optional<AnnotationInitials>.Of(initials), Optional<AnnotationText>.Of(text), Optional<AnnotationDateTime>.Of(datetime), Optional<AnnotationCheckbox>.Of(checkbox));\n\nvar response = await client.Signplus.AddTemplateAnnotationAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/annotation/{annotation_id}": {
+      "delete": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nawait client.Signplus.DeleteTemplateAnnotationAsync(\"template_id\", \"annotation_id\");\n\n"
+    },
+    "/template/{template_id}/attachments/settings": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar settings = new AttachmentSettings(Optional<bool>.Of(false));\nvar input = new SetEnvelopeAttachmentsSettingsRequest(settings);\n\nvar response = await client.Signplus.SetTemplateAttachmentsSettingsAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/template/{template_id}/attachments/placeholders": {
+      "put": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar placeholdersItem = new AttachmentPlaceholderRequest(\"recipient_id\", \"name\", false, true, Optional<string>.Of(\"id\"), Optional<string>.Of(\"hint\"));\nvar placeholders = new List<AttachmentPlaceholderRequest>() { placeholdersItem };\nvar input = new SetEnvelopeAttachmentsPlaceholdersRequest(placeholders);\n\nvar response = await client.Signplus.SetTemplateAttachmentsPlaceholdersAsync(input, \"template_id\");\n\nConsole.WriteLine(response);\n"
+    },
+    "/webhook": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new CreateWebhookRequest(WebhookEvent.EnvelopeExpired, \"target\");\n\nvar response = await client.Signplus.CreateWebhookAsync(input);\n\nConsole.WriteLine(response);\n"
+    },
+    "/webhooks": {
+      "post": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Alohi.Signplus.Models;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar input = new ListWebhooksRequest(Optional<string>.Of(\"webhook_id\"), Optional<WebhookEvent>.Of(WebhookEvent.EnvelopeExpired));\n\nvar response = await client.Signplus.ListWebhooksAsync(input);\n\nConsole.WriteLine(response);\n"
+    },
+    "/webhook/{webhook_id}": {
+      "delete": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new SignplusConfig{\n    AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nawait client.Signplus.DeleteWebhookAsync(\"webhook_id\");\n\n"
+    }
+  },
+  "methodResponses": {
+    "/envelope": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelope/from_template/{template_id}": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelopes": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/signed_documents": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/certificate": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/document/{document_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/documents": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/document": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/dynamic_fields": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/signing_steps": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/attachments/settings": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/attachments/placeholders": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/attachments/{file_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/send": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/duplicate": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/void": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/rename": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/set_comment": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/set_notification": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/set_expiration_date": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/set_legality_level": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/annotations": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/annotations/{document_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/envelope/{envelope_id}/annotation": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/template": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/templates": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/duplicate": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/document": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/document/{document_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/documents": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/signing_steps": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/rename": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/set_comment": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/set_notification": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/annotations": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/annotations/{document_id}": {
+      "get": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/annotation": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/attachments/settings": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/template/{template_id}/attachments/placeholders": {
+      "put": "Console.WriteLine(response);"
+    },
+    "/webhook": {
+      "post": "Console.WriteLine(response);"
+    },
+    "/webhooks": {
+      "post": "Console.WriteLine(response);"
+    }
+  },
+  "example": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\nusing Environment = Alohi.Signplus.Http.Environment;\n\nvar config = new SignplusConfig\n{\n  AccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);\n\nvar response = await client.Signplus.GetEnvelopeAsync(\"envelope_id\");\n\nConsole.WriteLine(response);\n",
+  "authentication": {
+    "bearer": {
+      "constructor": "using Alohi.Signplus;\nusing Alohi.Signplus.Config;\n\nvar config = new Alohi.SignplusConfig()\n{\n\tAccessToken = \"YOUR_ACCESS_TOKEN\"\n};\n\nvar client = new SignplusClient(config);",
+      "setter": "client.SetAccessToken(\"YOUR_ACCESS_TOKEN\")"
+    }
+  }
+}

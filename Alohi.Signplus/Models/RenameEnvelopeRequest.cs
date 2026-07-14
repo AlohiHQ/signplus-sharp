@@ -6,7 +6,6 @@ public record RenameEnvelopeRequest(
     /// <value>Name of the envelope</value>
     [property:
         JsonPropertyName("name"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Name = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Name = default
 );

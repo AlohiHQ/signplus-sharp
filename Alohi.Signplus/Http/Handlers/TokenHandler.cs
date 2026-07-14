@@ -8,6 +8,7 @@ public class TokenHandler : DelegatingHandler
     public string? Token { get; set; }
     public string? Header { get; set; } = "Authorization";
     public string Prefix { get; init; } = "Bearer";
+    public string? OverrideTokenOptionsKey { get; init; }
 
     public TokenHandler(HttpMessageHandler? innerHandler = null)
         : base(innerHandler ?? new HttpClientHandler()) { }
@@ -17,11 +18,35 @@ public class TokenHandler : DelegatingHandler
         CancellationToken cancellationToken
     )
     {
-        if (Token is not null && Header is not null)
+        string? effectiveToken = Token;
+        string? effectiveHeader = Header;
+
+        if (
+            OverrideTokenOptionsKey is not null
+            && request.Options.TryGetValue(
+                new HttpRequestOptionsKey<string>(OverrideTokenOptionsKey),
+                out var overrideToken
+            )
+        )
         {
-            if (request.Headers.Contains(Header))
-                request.Headers.Remove(Header);
-            request.Headers.Add(Header, $"{Prefix} {Token}");
+            effectiveToken = overrideToken;
+        }
+
+        if (
+            request.Options.TryGetValue(
+                new HttpRequestOptionsKey<string>("_RequestConfig_OverrideHeader"),
+                out var overrideHeader
+            )
+        )
+        {
+            effectiveHeader = overrideHeader;
+        }
+
+        if (effectiveToken is not null && effectiveHeader is not null)
+        {
+            if (request.Headers.Contains(effectiveHeader))
+                request.Headers.Remove(effectiveHeader);
+            request.Headers.Add(effectiveHeader, $"{Prefix} {effectiveToken}");
         }
 
         return base.SendAsync(request, cancellationToken);

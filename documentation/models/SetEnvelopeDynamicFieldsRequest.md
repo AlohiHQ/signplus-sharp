@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name          | Type               | Required | Description            |
-| :------------ | :----------------- | :------- | :--------------------- |
-| DynamicFields | List<DynamicField> | ✅       | List of dynamic fields |
+| Name          | Type                                  | Required | Description            |
+| :------------ | :------------------------------------ | :------- | :--------------------- |
+| DynamicFields | List<[DynamicField](DynamicField.md)> | ✅       | List of dynamic fields |

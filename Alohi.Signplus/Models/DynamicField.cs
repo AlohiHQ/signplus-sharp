@@ -6,13 +6,11 @@ public record DynamicField(
     /// <value>Name of the dynamic field</value>
     [property:
         JsonPropertyName("name"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Name = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Name = default,
     /// <value>Value of the dynamic field</value>
     [property:
         JsonPropertyName("value"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Value = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Value = default
 );

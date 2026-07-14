@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name     | Type          | Required | Description |
-| :------- | :------------ | :------- | :---------- |
-| Webhooks | List<Webhook> | ❌       |             |
+| Name     | Type                        | Required | Description |
+| :------- | :-------------------------- | :------- | :---------- |
+| Webhooks | List<[Webhook](Webhook.md)> | ❌       |             |

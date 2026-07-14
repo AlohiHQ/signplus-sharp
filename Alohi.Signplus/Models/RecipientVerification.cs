@@ -12,9 +12,8 @@ public record RecipientVerification(
     /// </value>
     [property:
         JsonPropertyName("type"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        RecipientVerificationType? Type_ = null,
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<RecipientVerificationType> Type_ = default,
     /// <value>
     /// Required for `PASSCODE` and `SMS` verification.
     ///
@@ -24,7 +23,6 @@ public record RecipientVerification(
     /// </value>
     [property:
         JsonPropertyName("value"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        string? Value = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<string> Value = default
 );

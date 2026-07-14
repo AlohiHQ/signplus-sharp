@@ -4,7 +4,13 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class AddAnnotationRequestValidator : AbstractValidator<AddAnnotationRequest?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.AddAnnotationRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class AddAnnotationRequestValidator
+    : AbstractValidator<global::Alohi.Signplus.Models.AddAnnotationRequest>
 {
     public AddAnnotationRequestValidator()
     {
@@ -29,5 +35,26 @@ public class AddAnnotationRequestValidator : AbstractValidator<AddAnnotationRequ
         RuleFor(AddAnnotationRequest => AddAnnotationRequest.Type_)
             .NotNull()
             .WithMessage("Field type is required and cannot be null.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.RecipientId)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field RecipientId cannot be null when provided.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.Required)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Required cannot be null when provided.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.Signature)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Signature cannot be null when provided.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.Initials)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Initials cannot be null when provided.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.Text)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Text cannot be null when provided.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.Datetime)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Datetime cannot be null when provided.");
+        RuleFor(AddAnnotationRequest => AddAnnotationRequest.Checkbox)
+            .Must(opt => !opt.IsProvided || opt.Value != null)
+            .WithMessage("Field Checkbox cannot be null when provided.");
     }
 }

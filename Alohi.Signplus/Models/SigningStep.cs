@@ -6,7 +6,6 @@ public record SigningStep(
     /// <value>List of recipients</value>
     [property:
         JsonPropertyName("recipients"),
-        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)
-    ]
-        List<Recipient>? Recipients = null
+        JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)
+    ] Optional<List<Recipient>> Recipients = default
 );

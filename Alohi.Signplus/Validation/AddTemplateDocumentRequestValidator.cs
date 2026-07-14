@@ -4,7 +4,13 @@ using Alohi.Signplus.Models;
 using FluentValidation;
 using FluentValidation.Results;
 
-public class AddTemplateDocumentRequestValidator : AbstractValidator<AddTemplateDocumentRequest?>
+/// <summary>
+/// FluentValidation validator for global::Alohi.Signplus.Models.AddTemplateDocumentRequest model.
+/// Defines validation rules for required fields, formats, ranges, and constraints based on the API schema.
+/// Automatically validates instances during request serialization and response deserialization.
+/// </summary>
+public class AddTemplateDocumentRequestValidator
+    : AbstractValidator<global::Alohi.Signplus.Models.AddTemplateDocumentRequest>
 {
     public AddTemplateDocumentRequestValidator()
     {
